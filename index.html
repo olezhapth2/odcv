@@ -3,102 +3,728 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Oleg Devyatov - Landing</title>
+    <title>Oleg Devyatov — Product Designer</title>
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
       href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@400&family=Outfit:wght@400;500&family=Playfair+Display:wght@900&family=Space+Grotesk:wght@400;500;700&display=swap"
       rel="stylesheet"
     />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Material+Symbols+Rounded:opsz,wght,FILL,GRAD@24,400,0,0&display=swap"
+      rel="stylesheet"
+    />
     <link rel="stylesheet" href="./styles.css" />
   </head>
   <body>
+    <div
+      id="scrollProgress"
+      class="scroll-progress"
+      role="progressbar"
+      aria-valuemin="0"
+      aria-valuemax="100"
+      aria-valuenow="0"
+      aria-label="Reading progress"
+    ></div>
+    <div id="toast" class="toast" hidden role="status" aria-live="polite"></div>
+
+    <button type="button" id="backToTop" class="back-to-top" hidden aria-label="Back to top">↑</button>
+
+    <div id="siteModal" class="modal" hidden>
+      <div class="modal__dialog" role="dialog" aria-modal="true" aria-labelledby="modalTitle" tabindex="-1">
+        <button type="button" id="modalClose" class="modal__close" aria-label="Close">×</button>
+        <h3 id="modalTitle" class="modal__title"></h3>
+        <div id="modalBody" class="modal__body"></div>
+        <p id="modalLinkWrap" class="modal__link-wrap" hidden>
+          <a id="modalLink" class="modal__link" href="#" target="_blank" rel="noopener noreferrer"></a>
+        </p>
+      </div>
+    </div>
+
     <main class="page">
       <section class="hero">
         <div class="hero__glow hero__glow--pink"></div>
-        <div class="hero__topline">
-          <span class="hero__location">Bangkok, Thailand - Open to remote</span>
+        <div class="hero__bar">
+          <div class="hero__topline">
+            <a
+              class="hero__location-icon"
+              href="https://fonts.google.com/icons?q=location_on"
+              target="_blank"
+              rel="noopener noreferrer"
+              aria-label="Google Fonts Icons: location_on"
+            >
+              <span class="material-symbols-rounded" aria-hidden="true">location_on</span>
+            </a>
+            <span class="hero__location">Bangkok, Thailand · Open to remote</span>
+          </div>
+          <div class="lang-toggle" role="group" aria-label="Language">
+            <button type="button" data-set-lang="en" aria-pressed="true">EN</button>
+            <button type="button" data-set-lang="ru" aria-pressed="false">RU</button>
+          </div>
         </div>
+
         <h1>Oleg Devyatov</h1>
         <p class="hero__description">
-          Senior Product Designer - UX + UI with 8+ years at the intersection of UX strategy,
-          design systems, and AI workflows.
+          Senior Product Designer · UX · UI — 9+ years at the intersection of UX strategy, design systems,
+          and AI workflows. Full-cycle products, scaled teams, internal tools that save hundreds of hours.
         </p>
 
         <div class="hero__contacts">
           <a class="pill pill--light" href="mailto:olegdevyatow@gmail.com">olegdevyatow@gmail.com</a>
-          <a class="pill" href="#">Telegram</a>
-          <a class="pill" href="#">LinkedIn</a>
-          <a class="pill" href="#">Behance</a>
+          <a class="pill pill--stack" href="https://t.me/olegdevyatow" target="_blank" rel="noopener noreferrer">
+            <span class="pill__title">Telegram</span>
+            <span class="pill__meta">Telegram · @olegdevyatow</span>
+          </a>
+          <a
+            class="pill"
+            href="https://www.linkedin.com/in/oleg-devyatow-653584367/"
+            target="_blank"
+            rel="noopener noreferrer"
+            >LinkedIn</a
+          >
+          <a class="pill" href="https://www.behance.net/reesoonki" target="_blank" rel="noopener noreferrer"
+            >Behance</a
+          >
         </div>
 
-        <div class="skills-grid">
-          <article class="skill-card">
-            <h3>Product Thinking</h3>
-            <p>Outcomes, not screens.</p>
+        <div class="skill-strip-row" aria-label="Competency shortcuts">
+          <button type="button" class="skill-strip" data-skill-ref="product-thinking">
+            <a
+              class="skill-strip__icon-link"
+              href="https://fonts.google.com/icons?q=psychology"
+              target="_blank"
+              rel="noopener noreferrer"
+              aria-label="Google Fonts Icons: psychology"
+              ><span class="material-symbols-rounded" aria-hidden="true">psychology</span></a
+            >
+            <span class="skill-strip__label">Product Thinking</span>
+          </button>
+          <button type="button" class="skill-strip" data-skill-ref="ux-research">
+            <a
+              class="skill-strip__icon-link"
+              href="https://fonts.google.com/icons?q=biotech"
+              target="_blank"
+              rel="noopener noreferrer"
+              aria-label="Google Fonts Icons: biotech"
+              ><span class="material-symbols-rounded" aria-hidden="true">biotech</span></a
+            >
+            <span class="skill-strip__label">UX Research</span>
+          </button>
+          <button type="button" class="skill-strip" data-skill-ref="information-architecture">
+            <a
+              class="skill-strip__icon-link"
+              href="https://fonts.google.com/icons?q=account_tree"
+              target="_blank"
+              rel="noopener noreferrer"
+              aria-label="Google Fonts Icons: account_tree"
+              ><span class="material-symbols-rounded" aria-hidden="true">account_tree</span></a
+            >
+            <span class="skill-strip__label">Information Architecture</span>
+          </button>
+          <button type="button" class="skill-strip" data-skill-ref="design-systems">
+            <a
+              class="skill-strip__icon-link"
+              href="https://fonts.google.com/icons?q=hub"
+              target="_blank"
+              rel="noopener noreferrer"
+              aria-label="Google Fonts Icons: hub"
+              ><span class="material-symbols-rounded" aria-hidden="true">hub</span></a
+            >
+            <span class="skill-strip__label">Design Systems</span>
+          </button>
+          <button type="button" class="skill-strip" data-skill-ref="ai-workflow">
+            <a
+              class="skill-strip__icon-link"
+              href="https://fonts.google.com/icons?q=smart_toy"
+              target="_blank"
+              rel="noopener noreferrer"
+              aria-label="Google Fonts Icons: smart_toy"
+              ><span class="material-symbols-rounded" aria-hidden="true">smart_toy</span></a
+            >
+            <span class="skill-strip__label">AI-Augmented Workflow</span>
+          </button>
+          <button type="button" class="skill-strip" data-skill-ref="agentive-ux">
+            <a
+              class="skill-strip__icon-link"
+              href="https://fonts.google.com/icons?q=gamepad"
+              target="_blank"
+              rel="noopener noreferrer"
+              aria-label="Google Fonts Icons: gamepad"
+              ><span class="material-symbols-rounded" aria-hidden="true">gamepad</span></a
+            >
+            <span class="skill-strip__label">Agentive UX</span>
+          </button>
+          <button type="button" class="skill-strip" data-skill-ref="design-ops">
+            <a
+              class="skill-strip__icon-link"
+              href="https://fonts.google.com/icons?q=settings_suggest"
+              target="_blank"
+              rel="noopener noreferrer"
+              aria-label="Google Fonts Icons: settings_suggest"
+              ><span class="material-symbols-rounded" aria-hidden="true">settings_suggest</span></a
+            >
+            <span class="skill-strip__label">Design Ops</span>
+          </button>
+          <button type="button" class="skill-strip" data-skill-ref="ecosystem">
+            <a
+              class="skill-strip__icon-link"
+              href="https://fonts.google.com/icons?q=language"
+              target="_blank"
+              rel="noopener noreferrer"
+              aria-label="Google Fonts Icons: language"
+              ><span class="material-symbols-rounded" aria-hidden="true">language</span></a
+            >
+            <span class="skill-strip__label">Ecosystem Design</span>
+          </button>
+          <button type="button" class="skill-strip" data-skill-ref="cross-functional">
+            <a
+              class="skill-strip__icon-link"
+              href="https://fonts.google.com/icons?q=groups"
+              target="_blank"
+              rel="noopener noreferrer"
+              aria-label="Google Fonts Icons: groups"
+              ><span class="material-symbols-rounded" aria-hidden="true">groups</span></a
+            >
+            <span class="skill-strip__label">Cross-functional Leadership</span>
+          </button>
+          <button type="button" class="skill-strip" data-skill-ref="mentorship">
+            <a
+              class="skill-strip__icon-link"
+              href="https://fonts.google.com/icons?q=school"
+              target="_blank"
+              rel="noopener noreferrer"
+              aria-label="Google Fonts Icons: school"
+              ><span class="material-symbols-rounded" aria-hidden="true">school</span></a
+            >
+            <span class="skill-strip__label">Mentorship &amp; Education</span>
+          </button>
+        </div>
+      </section>
+
+      <section class="section" id="skills-matrix">
+        <div class="section__head">
+          <h2>RESEARCH · VISUAL · DELIVERY · ART</h2>
+          <button
+            type="button"
+            class="section__copy-link"
+            data-anchor="skills-matrix"
+            aria-label="Copy link to Skills matrix section"
+          >
+            <span class="material-symbols-rounded" aria-hidden="true">link</span>
+          </button>
+        </div>
+        <div class="skills-grid skills-grid--matrix">
+          <article
+            class="skill-card skill-card--interactive"
+            data-skill="product-thinking"
+            data-title-en="Product Thinking"
+            data-title-ru="Product Thinking"
+            data-body-en="Outcomes, not screens. Nine-plus years across fintech, SaaS, and AI: twenty-plus products shipped. Marketing before design tools — JTBD, CJM, Impact Mapping; roadmap co-owned with PM via RICE/ICE. Tags: 9+ yrs · 20+ products · Fintech · SaaS · AI. Case Gate19: A/B-tested payment format flow; the winning format became the default across a twenty-product platform."
+            data-body-ru="Результат, а не экраны. 9+ лет в финтехе, SaaS и AI — 20+ продуктов. Маркетинг до дизайн-инструментов — JTBD, CJM, Impact Mapping; роадмап совместно с PM через RICE/ICE. Теги: 9+ лет · 20+ продуктов · Fintech · SaaS · AI. Кейс Gate19: A/B форматов оплаты; победивший сценарий стал дефолтом на платформе из 20 продуктов."
+          >
+            <div class="skill-card__head">
+              <a
+                class="skill-card__icon-link"
+                href="https://fonts.google.com/icons?q=psychology"
+                target="_blank"
+                rel="noopener noreferrer"
+                aria-label="Google Fonts Icons: psychology"
+                ><span class="material-symbols-rounded" aria-hidden="true">psychology</span></a
+              >
+              <div>
+                <h3>Product Thinking</h3>
+                <p class="skill-card__sub">Outcomes, not screens</p>
+              </div>
+            </div>
+            <div class="skill-card__tags">
+              <span class="chip chip--dense">9+ yrs</span>
+              <span class="chip chip--dense">9+ лет</span>
+              <span class="chip chip--dense">20+ products</span>
+              <span class="chip chip--dense">Fintech · SaaS · AI</span>
+            </div>
+            <p class="skill-card__preview">
+              Marketing degree before any design tool. JTBD, CJM, Impact Mapping — roadmap co-owned with PM via RICE/ICE.
+            </p>
+            <p class="skill-card__case"><span class="skill-card__case-arrow">→</span> Gate19 — A/B tested payment format flow.</p>
           </article>
-          <article class="skill-card">
-            <h3>UX Research</h3>
-            <p>Marketing brain + designer eye.</p>
+
+          <article
+            class="skill-card skill-card--interactive"
+            data-skill="ux-research"
+            data-title-en="UX Research"
+            data-title-ru="UX Research"
+            data-body-en="Marketing brain + designer eye: metric before pixels. One hundred-plus A/B experiments; Amplitude and Mixpanel for validation. Case JAVHD: one hundred-plus landing variants, each with a defined conversion hypothesis. Top performers became a templated system."
+            data-body-ru="Маркетинговый мозг и дизайнерский глаз: сначала метрика, потом пиксели. 100+ A/B; Amplitude и Mixpanel для проверки. Кейс JAVHD: 100+ лендингов с чёткой гипотезой конверсии; лучшие стали системой шаблонов."
+          >
+            <div class="skill-card__head">
+              <a
+                class="skill-card__icon-link"
+                href="https://fonts.google.com/icons?q=biotech"
+                target="_blank"
+                rel="noopener noreferrer"
+                aria-label="Google Fonts Icons: biotech"
+                ><span class="material-symbols-rounded" aria-hidden="true">biotech</span></a
+              >
+              <div>
+                <h3>UX Research</h3>
+                <p class="skill-card__sub">Marketing brain + designer eye</p>
+              </div>
+            </div>
+            <div class="skill-card__tags">
+              <span class="chip chip--dense">100+ A/B</span>
+              <span class="chip chip--dense">Amplitude · Mixpanel</span>
+            </div>
+            <p class="skill-card__preview">Marketing-trained researcher: mental models, metric before pixels.</p>
+            <p class="skill-card__case"><span class="skill-card__case-arrow">→</span> JAVHD — 100+ landings → system.</p>
           </article>
-          <article class="skill-card">
-            <h3>Information Architecture</h3>
-            <p>Complex systems that feel simple.</p>
+
+          <article
+            class="skill-card skill-card--interactive"
+            data-skill="information-architecture"
+            data-title-en="Information Architecture"
+            data-title-ru="Information Architecture"
+            data-body-en="Complex systems that feel simple. CRM, SaaS, dashboards — empty states, errors, progressive disclosure with the same care as the happy path. Case Corgday HR CRM: restructured IA around real HR workflows; Slack alerts cut manual follow-ups by about forty percent."
+            data-body-ru="Сложные системы, которые ощущаются простыми. CRM, SaaS, дашборды — пустые состояния, ошибки, progressive disclosure с той же заботой, что и happy path. Кейс Corgday HR CRM: IA вокруг реальных HR-процессов; алерты в Slack сократили ручные напоминания примерно на 40%."
+          >
+            <div class="skill-card__head">
+              <a
+                class="skill-card__icon-link"
+                href="https://fonts.google.com/icons?q=account_tree"
+                target="_blank"
+                rel="noopener noreferrer"
+                aria-label="Google Fonts Icons: account_tree"
+                ><span class="material-symbols-rounded" aria-hidden="true">account_tree</span></a
+              >
+              <div>
+                <h3>Information Architecture</h3>
+                <p class="skill-card__sub">Complex systems that feel simple</p>
+              </div>
+            </div>
+            <div class="skill-card__tags">
+              <span class="chip chip--dense">CRM · SaaS · Dashboards</span>
+              <span class="chip chip--dense">−40% follow-ups</span>
+            </div>
+            <p class="skill-card__preview">
+              Dense data, complex workflows. Empty states, error handling, progressive disclosure — same care as happy path.
+            </p>
+            <p class="skill-card__case"><span class="skill-card__case-arrow">→</span> Corgday HR CRM — IA around real workflows.</p>
           </article>
-          <article class="skill-card">
-            <h3>Design Systems</h3>
-            <p>Scalable interfaces and reusable patterns.</p>
+
+          <article
+            class="skill-card skill-card--interactive"
+            data-skill="design-systems"
+            data-title-en="Design Systems"
+            data-title-ru="Design Systems"
+            data-body-en="One library, twenty products, about five minutes to spin up a new surface. Roughly sixty percent less handoff friction; white-label ready. Gate19: shared library powering the ecosystem — new product UI in under seven days."
+            data-body-ru="Одна библиотека, 20 продуктов, около 5 минут на новый экран. Примерно на 60% меньше трения в хэнд-оффе; white-label. Gate19: общая библиотека для экосистемы — UI нового продукта быстрее 7 дней."
+          >
+            <div class="skill-card__head">
+              <a
+                class="skill-card__icon-link"
+                href="https://fonts.google.com/icons?q=hub"
+                target="_blank"
+                rel="noopener noreferrer"
+                aria-label="Google Fonts Icons: hub"
+                ><span class="material-symbols-rounded" aria-hidden="true">hub</span></a
+              >
+              <div>
+                <h3>Design Systems</h3>
+                <p class="skill-card__sub">One library. 20 products. 5 minutes.</p>
+              </div>
+            </div>
+            <div class="skill-card__tags">
+              <span class="chip chip--dense">−60% handoff</span>
+              <span class="chip chip--dense">White Label · 5 min</span>
+            </div>
+            <p class="skill-card__preview">Single source of truth across brands; tokens, components, and docs that scale.</p>
+            <p class="skill-card__case"><span class="skill-card__case-arrow">→</span> Gate19 — library across the ecosystem.</p>
+          </article>
+
+          <article
+            class="skill-card skill-card--interactive"
+            data-skill="ai-workflow"
+            data-title-en="AI-Augmented Workflow"
+            data-title-ru="AI-Augmented Workflow"
+            data-body-en="Building pipelines from brief to publish: roughly five times more iteration cycles without losing quality. Twenty-plus products touched. Partner: MiraiTech (PNB) — AI stack embedded in delivery."
+            data-body-ru="Пайплайны от брифа до публикации: примерно в 5 раз больше итераций без потери качества. 20+ продуктов. Партнёр: MiraiTech (PNB) — AI-стек внутри поставки."
+          >
+            <div class="skill-card__head">
+              <a
+                class="skill-card__icon-link"
+                href="https://fonts.google.com/icons?q=smart_toy"
+                target="_blank"
+                rel="noopener noreferrer"
+                aria-label="Google Fonts Icons: smart_toy"
+                ><span class="material-symbols-rounded" aria-hidden="true">smart_toy</span></a
+              >
+              <div>
+                <h3>AI-Augmented Workflow</h3>
+                <p class="skill-card__sub">Building pipelines…</p>
+              </div>
+            </div>
+            <div class="skill-card__tags">
+              <span class="chip chip--dense">brief → publish</span>
+              <span class="chip chip--dense">~5× iterations</span>
+              <span class="chip chip--dense">20+ products</span>
+            </div>
+            <p class="skill-card__preview">Brief to shipped with AI assist — faster exploration, same bar for craft.</p>
+            <p class="skill-card__case"><span class="skill-card__case-arrow">→</span> MiraiTech (PNB)</p>
+          </article>
+
+          <article
+            class="skill-card skill-card--interactive"
+            data-skill="agentive-ux"
+            data-title-en="Agentive UX"
+            data-title-ru="Agentive UX"
+            data-body-en="When AI acts, UX becomes about trust, recovery, and human-in-the-loop. Agent UI patterns, guardrails, and clear states for autonomous flows. Case ShugarAi (MiraiTech): cohort behavior with a new feed — plus twenty-seven percent wow return visits and plus nineteen percent session length."
+            data-body-ru="Когда действует AI, UX про доверие, восстановление и human-in-the-loop. Паттерны агентского UI и ясные состояния. Кейс ShugarAi (MiraiTech): когорты с новой лентой — +27% wow-возвратов, +19% длины сессии."
+          >
+            <div class="skill-card__head">
+              <a
+                class="skill-card__icon-link"
+                href="https://fonts.google.com/icons?q=gamepad"
+                target="_blank"
+                rel="noopener noreferrer"
+                aria-label="Google Fonts Icons: gamepad"
+                ><span class="material-symbols-rounded" aria-hidden="true">gamepad</span></a
+              >
+              <div>
+                <h3>Agentive UX</h3>
+                <p class="skill-card__sub">When AI acts, UX becomes about trust</p>
+              </div>
+            </div>
+            <div class="skill-card__tags">
+              <span class="chip chip--dense">AI flows</span>
+              <span class="chip chip--dense">agent UI</span>
+              <span class="chip chip--dense">human-in-the-loop</span>
+            </div>
+            <p class="skill-card__preview">Designing for autonomy: permissions, undo, and explainability by default.</p>
+            <p class="skill-card__case"><span class="skill-card__case-arrow">→</span> ShugarAi — MiraiTech</p>
+          </article>
+
+          <article
+            class="skill-card skill-card--interactive"
+            data-skill="design-ops"
+            data-title-en="Design Ops"
+            data-title-ru="Design Ops"
+            data-body-en="Systems, not just talent: roughly sixty percent less handoff overhead; twenty-plus streams in parallel with a shared AI stack. Delivery partner MiraiTech — predictable rituals and artifacts."
+            data-body-ru="Системы, а не только люди: примерно на 60% меньше оверхеда в хэнд-оффе; 20+ параллельных потоков и общий AI-стек. Поставка с MiraiTech — предсказуемые ритуалы и артефакты."
+          >
+            <div class="skill-card__head">
+              <a
+                class="skill-card__icon-link"
+                href="https://fonts.google.com/icons?q=settings_suggest"
+                target="_blank"
+                rel="noopener noreferrer"
+                aria-label="Google Fonts Icons: settings_suggest"
+                ><span class="material-symbols-rounded" aria-hidden="true">settings_suggest</span></a
+              >
+              <div>
+                <h3>Design Ops</h3>
+                <p class="skill-card__sub">Systems, not just talent</p>
+              </div>
+            </div>
+            <div class="skill-card__tags">
+              <span class="chip chip--dense">−60% handoff</span>
+              <span class="chip chip--dense">20+ parallel</span>
+              <span class="chip chip--dense">AI stack</span>
+            </div>
+            <p class="skill-card__preview">Rituals, templates, and tooling so teams ship without heroics.</p>
+            <p class="skill-card__case"><span class="skill-card__case-arrow">→</span> MiraiTech</p>
+          </article>
+
+          <article
+            class="skill-card skill-card--interactive"
+            data-skill="ecosystem"
+            data-title-en="Ecosystem Design"
+            data-title-ru="Ecosystem Design"
+            data-body-en="The whole journey: entry, activation, retention — three-plus ecosystems orchestrated as one product story. Case JAVHD (MiraiTech): funnel A/B at scale; one hundred-plus landings converged into a repeatable system."
+            data-body-ru="Весь путь: вход, активация, удержание — 3+ экосистемы как одна история продукта. Кейс JAVHD (MiraiTech): A/B воронок в масштабе; 100+ лендингов сошлись в повторяемую систему."
+          >
+            <div class="skill-card__head">
+              <a
+                class="skill-card__icon-link"
+                href="https://fonts.google.com/icons?q=language"
+                target="_blank"
+                rel="noopener noreferrer"
+                aria-label="Google Fonts Icons: language"
+                ><span class="material-symbols-rounded" aria-hidden="true">language</span></a
+              >
+              <div>
+                <h3>Ecosystem Design</h3>
+                <p class="skill-card__sub">The whole journey…</p>
+              </div>
+            </div>
+            <div class="skill-card__tags">
+              <span class="chip chip--dense">Entry → Retention</span>
+              <span class="chip chip--dense">3+ ecosystems</span>
+            </div>
+            <p class="skill-card__preview">Connecting acquisition, product, and lifecycle metrics into one narrative.</p>
+            <p class="skill-card__case"><span class="skill-card__case-arrow">→</span> JAVHD — MiraiTech</p>
+          </article>
+
+          <article
+            class="skill-card skill-card--interactive"
+            data-skill="cross-functional"
+            data-title-en="Cross-functional Leadership"
+            data-title-ru="Cross-functional Leadership"
+            data-body-en="Fluent in PM, engineering, and analytics — three years co-steering roadmaps across teams. Partner context MiraiTech · three years: shared goals, shared metrics, shared rituals."
+            data-body-ru="На одном языке с PM, инженерами и аналитикой — 3 года совместного роадмапа между командами. Контекст MiraiTech · 3 года: общие цели, метрики и ритуалы."
+          >
+            <div class="skill-card__head">
+              <a
+                class="skill-card__icon-link"
+                href="https://fonts.google.com/icons?q=groups"
+                target="_blank"
+                rel="noopener noreferrer"
+                aria-label="Google Fonts Icons: groups"
+                ><span class="material-symbols-rounded" aria-hidden="true">groups</span></a
+              >
+              <div>
+                <h3>Cross-functional Leadership</h3>
+                <p class="skill-card__sub">Fluent in PM, engineering, analytics</p>
+              </div>
+            </div>
+            <div class="skill-card__tags">
+              <span class="chip chip--dense">3 yrs cross-team</span>
+              <span class="chip chip--dense">Roadmap co-owner</span>
+            </div>
+            <p class="skill-card__preview">Workshops, specs, and reviews that keep design, dev, and data aligned.</p>
+            <p class="skill-card__case"><span class="skill-card__case-arrow">→</span> MiraiTech · 3 years</p>
+          </article>
+
+          <article
+            class="skill-card skill-card--interactive"
+            data-skill="mentorship"
+            data-title-en="Mentorship &amp; Education"
+            data-title-ru="Mentorship &amp; Education"
+            data-body-en="Teaching made me a sharper designer: one thousand-plus students across CONTENTED and Skillbox — from junior to middle. Curriculum tied to real product craft, not tool tips alone."
+            data-body-ru="Преподавание сделало меня точнее: 1000+ студентов в CONTENTED и Skillbox — от junior до middle. Программа про продуктовый крафт, а не только инструменты."
+          >
+            <div class="skill-card__head">
+              <a
+                class="skill-card__icon-link"
+                href="https://fonts.google.com/icons?q=school"
+                target="_blank"
+                rel="noopener noreferrer"
+                aria-label="Google Fonts Icons: school"
+                ><span class="material-symbols-rounded" aria-hidden="true">school</span></a
+              >
+              <div>
+                <h3>Mentorship &amp; Education</h3>
+                <p class="skill-card__sub">Teaching made me a sharper designer</p>
+              </div>
+            </div>
+            <div class="skill-card__tags">
+              <span class="chip chip--dense">1000+ students</span>
+              <span class="chip chip--dense">CONTENTED · Skillbox</span>
+              <span class="chip chip--dense">Junior → Middle</span>
+            </div>
+            <p class="skill-card__preview">Programs that bridge theory and shipping — critique, systems, and career paths.</p>
+            <p class="skill-card__case"><span class="skill-card__case-arrow">→</span> CONTENTED + Skillbox</p>
           </article>
         </div>
       </section>
 
-      <section class="section">
-        <h2>RESEARCH - VISUAL - DELIVERY - ART</h2>
-        <div class="chip-grid">
-          <span class="chip">Wireframes &amp; UI systems</span>
-          <span class="chip">Visual language</span>
-          <span class="chip">Product storytelling</span>
-          <span class="chip">Art direction</span>
-          <span class="chip">Design QA</span>
-          <span class="chip">Prototyping</span>
-          <span class="chip">A/B tests</span>
-          <span class="chip">UX audits</span>
-          <span class="chip">JTBD</span>
-          <span class="chip">Design tokens</span>
-          <span class="chip">Documentation</span>
-          <span class="chip">Interaction design</span>
+      <section class="section" id="projects">
+        <div class="section__head">
+          <h2>WORK THAT SHIPPED &amp; WORKED</h2>
+          <button
+            type="button"
+            class="section__copy-link"
+            data-anchor="projects"
+            aria-label="Copy link to Projects section"
+          >
+            <span class="material-symbols-rounded" aria-hidden="true">link</span>
+          </button>
         </div>
-      </section>
-
-      <section class="section">
-        <h2>WORK THAT SHIPPED &amp; WORKED</h2>
         <div class="work-grid">
-          <article class="work-card">
-            <img src="https://www.figma.com/api/mcp/asset/59832389-aacb-42ea-9a7e-24a0085166e6" alt="White Label Systems" />
+          <article
+            class="work-card work-card--interactive"
+            data-project="game-ui"
+            data-title-en="Game UI · In-game Shop"
+            data-title-ru="Game UI · In-game Shop"
+            data-p1-en="Store and HUD work for a live game economy — bundles, offers, and clarity under pressure."
+            data-p1-ru="Магазин и HUD в живой игровой экономике — бандлы, офферы и ясность под давлением."
+            data-p2-en="We ran A/B on bundle presentation; attach rate improved by about eighteen percent while keeping latency stable."
+            data-p2-ru="A/B на подаче бандлов: attach вырос примерно на 18% при стабильной задержке."
+            data-p3-en="HUD offer readability dropped by about zero point three five seconds in lab tests — same metrics echoed in the third build of the case narrative."
+            data-p3-ru="Читаемость оффера в HUD в лаборатории — минус ~0.35 с; те же акценты в третьем абзаце кейса."
+          >
+            <img
+              src="https://www.figma.com/api/mcp/asset/59832389-aacb-42ea-9a7e-24a0085166e6"
+              alt=""
+              loading="lazy"
+            />
             <div class="work-card__body">
-              <h3>White Label Systems</h3>
-              <p>Design platform with reusable components and fast delivery cycles.</p>
+              <div class="work-card__chips">
+                <span class="chip chip--dense">+18% bundle attach (A/B)</span>
+                <span class="chip chip--dense">−0.35s HUD offer read</span>
+              </div>
+              <h3>Game UI · In-game Shop</h3>
+              <p>Live economy UI — bundles, offers, and HUD clarity under pressure.</p>
             </div>
           </article>
-          <article class="work-card">
-            <img src="https://www.figma.com/api/mcp/asset/f74532e2-21bb-4a74-9468-b00713fd647a" alt="FO11D" />
+
+          <article
+            class="work-card work-card--interactive"
+            data-project="gate19"
+            data-title-en="Gate19 · White Label Platform"
+            data-title-ru="Gate19 · White Label Platform"
+            data-p1-en="Ecosystem-wide design system and white-label rollout — one library serving twenty products."
+            data-p1-ru="Дизайн-система и white-label на всю экосистему — одна библиотека на 20 продуктов."
+            data-p2-en="Handoff time fell by about sixty percent; new product UI landed in under seven days with the five-minute white-label path."
+            data-p2-ru="Хэнд-офф сократился примерно на 60%; UI нового продукта — быстрее 7 дней, white-label за ~5 минут."
+            data-p3-en="The program sits inside the PNB Agency ecosystem — payment flows, A/B culture, and shared tokens across brands."
+            data-p3-ru="Программа в экосистеме PNB Agency — оплаты, культура A/B и общие токены между брендами."
+            data-link-url="https://pnb.agency"
+            data-link-label="PNB Agency"
+          >
+            <img
+              src="https://www.figma.com/api/mcp/asset/f74532e2-21bb-4a74-9468-b00713fd647a"
+              alt=""
+              loading="lazy"
+            />
             <div class="work-card__body">
-              <h3>FO11D</h3>
-              <p>Creative campaign experience with conversion-driven product storytelling.</p>
+              <div class="work-card__chips">
+                <span class="chip chip--dense">−60% handoff</span>
+                <span class="chip chip--dense">&lt;7 days new product UI</span>
+                <span class="chip chip--dense">White Label · 5 min</span>
+              </div>
+              <h3>Gate19</h3>
+              <p>One library, many brands — speed without breaking quality.</p>
             </div>
           </article>
-          <article class="work-card">
-            <img src="https://www.figma.com/api/mcp/asset/5df99f39-b449-4ed1-822f-e2a6ef75cd54" alt="Nagrani" />
+
+          <article
+            class="work-card work-card--interactive"
+            data-project="javhd"
+            data-title-en="JAVHD · Funnel Lab"
+            data-title-ru="JAVHD · Funnel Lab"
+            data-p1-en="One hundred-plus landing variants — each with a named conversion hypothesis and instrumentation."
+            data-p1-ru="100+ вариантов лендингов — у каждого именованная гипотеза конверсии и инструментирование."
+            data-p2-en="Trial-to-paid uplift of about twelve percent once winning patterns were templated."
+            data-p2-ru="Рост trial → paid примерно на 12% после шаблонизации победивших паттернов."
+            data-p3-en="Delivered with MiraiTech — A/B funnels at scale, from ideation to a repeatable landing system."
+            data-p3-ru="С MiraiTech — A/B воронки в масштабе, от идеи до повторяемой системы лендингов."
+            data-link-url="https://miraitech.co"
+            data-link-label="MiraiTech"
+          >
+            <img
+              src="https://www.figma.com/api/mcp/asset/5df99f39-b449-4ed1-822f-e2a6ef75cd54"
+              alt=""
+              loading="lazy"
+            />
             <div class="work-card__body">
-              <h3>Nagrani</h3>
-              <p>Dense data UI with clearer workflows and stronger behavioral metrics.</p>
+              <div class="work-card__chips">
+                <span class="chip chip--dense">+12% trial → paid</span>
+                <span class="chip chip--dense">100+ landings → system</span>
+              </div>
+              <h3>JAVHD</h3>
+              <p>High-volume landing experiments folded into a system.</p>
+            </div>
+          </article>
+
+          <article
+            class="work-card work-card--interactive"
+            data-project="corgday"
+            data-title-en="Corgday HR CRM"
+            data-title-ru="Corgday HR CRM"
+            data-p1-en="HR operations tool with dense queues — payroll exceptions, follow-ups, and noisy Slack threads."
+            data-p1-ru="HR-инструмент с плотными очередями — зарплатные исключения, фоллоуапы и шумные треды в Slack."
+            data-p2-en="Information architecture rebuilt around real workflows; manual follow-ups dropped by about forty percent."
+            data-p2-ru="IA перестроена вокруг реальных процессов; ручные фоллоуапы сократились примерно на 40%."
+            data-p3-en="Payroll exception queue wait fell by about twenty-eight percent after clarifying states and ownership."
+            data-p3-ru="Ожидание в очереди зарплатных исключений сократилось примерно на 28% после ясных статусов и ответственных."
+          >
+            <img
+              src="https://www.figma.com/api/mcp/asset/59832389-aacb-42ea-9a7e-24a0085166e6"
+              alt=""
+              loading="lazy"
+            />
+            <div class="work-card__body">
+              <div class="work-card__chips">
+                <span class="chip chip--dense">−40% manual follow-ups</span>
+                <span class="chip chip--dense">−28% payroll queue wait</span>
+              </div>
+              <h3>Corgday HR CRM</h3>
+              <p>Operational CRM — fewer pings, clearer ownership.</p>
+            </div>
+          </article>
+
+          <article
+            class="work-card work-card--interactive"
+            data-project="shugarai"
+            data-title-en="ShugarAi"
+            data-title-ru="ShugarAi"
+            data-p1-en="Agentic product surfaces with a new feed experience — cohorts behaved differently overnight."
+            data-p1-ru="Агентные поверхности с новой лентой — когорты стали вести себя иначе буквально за ночь."
+            data-p2-en="Wow return visits up about twenty-seven percent; session length up about nineteen percent after the feed redesign."
+            data-p2-ru="Wow-возвраты выросли примерно на 27%; длина сессии — на ~19% после редизайна ленты."
+            data-p3-en="Shipped with MiraiTech — trust-first UX for autonomous recommendations and recovery paths."
+            data-p3-ru="С MiraiTech — UX с упором на доверие для автономных рекомендаций и сценариев восстановления."
+            data-link-url="https://miraitech.co"
+            data-link-label="MiraiTech"
+          >
+            <img
+              src="https://www.figma.com/api/mcp/asset/f74532e2-21bb-4a74-9468-b00713fd647a"
+              alt=""
+              loading="lazy"
+            />
+            <div class="work-card__body">
+              <div class="work-card__chips">
+                <span class="chip chip--dense">+27% WoW return visits</span>
+                <span class="chip chip--dense">+19% session length</span>
+              </div>
+              <h3>ShugarAi</h3>
+              <p>Feed and agent UX — retention-led iteration.</p>
+            </div>
+          </article>
+
+          <article
+            class="work-card work-card--interactive"
+            data-project="adbot"
+            data-title-en="Adbot"
+            data-title-ru="Adbot"
+            data-p1-en="Campaign onboarding with dense venue cards — every field earned its place."
+            data-p1-ru="Онбординг кампаний с плотными карточками площадок — каждое поле оправдано."
+            data-p2-en="Steps to the first campaign dropped by about thirty-five percent after restructuring the wizard."
+            data-p2-ru="Шагов до первой кампании стало примерно на 35% меньше после перестройки визарда."
+            data-p3-en="Focus on comprehension, not clicks — progressive disclosure for complex ad parameters."
+            data-p3-ru="Фокус на понимании, а не на кликах — progressive disclosure для сложных параметров рекламы."
+          >
+            <img
+              src="https://www.figma.com/api/mcp/asset/5df99f39-b449-4ed1-822f-e2a6ef75cd54"
+              alt=""
+              loading="lazy"
+            />
+            <div class="work-card__body">
+              <div class="work-card__chips">
+                <span class="chip chip--dense">−35% steps to 1st campaign</span>
+                <span class="chip chip--dense">Dense venue cards</span>
+              </div>
+              <h3>Adbot</h3>
+              <p>Onboarding that respects cognitive load.</p>
             </div>
           </article>
         </div>
       </section>
 
-      <section class="section">
-        <h2>WOW YEARS, FROM PRINT TO AI</h2>
+      <section class="section" id="experience">
+        <div class="section__head">
+          <h2>
+            WOW YEARS, FROM PRINT TO AI
+            <span class="h2__sub">9+ years / 9+ лет</span>
+          </h2>
+          <button
+            type="button"
+            class="section__copy-link"
+            data-anchor="experience"
+            aria-label="Copy link to Experience section"
+          >
+            <span class="material-symbols-rounded" aria-hidden="true">link</span>
+          </button>
+        </div>
         <ul class="timeline">
           <li><span>2024</span><p>Senior Product Designer</p></li>
           <li><span>2023</span><p>Career Buffer</p></li>
@@ -109,7 +735,7 @@
         </ul>
       </section>
 
-      <section class="section section--last">
+      <section class="section">
         <h2>EDUCATION</h2>
         <ul class="timeline">
           <li><span>2023</span><p>CONTENTED - Graphic Design &amp; SMM Design</p></li>
@@ -117,6 +743,16 @@
           <li><span>2020</span><p>Stepik / Skillbox - Graphics &amp; Printing</p></li>
         </ul>
       </section>
+
+      <footer class="footer-cta section section--last">
+        <p class="footer-cta__text">
+          9+ years crafting UX, UI, and systems — from first brief to scaled delivery. Let’s talk:
+          <a href="mailto:olegdevyatow@gmail.com">olegdevyatow@gmail.com</a>
+          ·
+          <a href="https://t.me/olegdevyatow" target="_blank" rel="noopener noreferrer">Telegram</a>
+        </p>
+      </footer>
     </main>
+    <script src="./main.js" defer></script>
   </body>
 </html>
