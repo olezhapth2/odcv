@@ -666,6 +666,192 @@ body.modal-open {
   text-decoration: underline;
 }
 
+/* Glass skill cards — лёгкий glassmorphism в духе интерактивных glass-кнопок (напр. Uiverse / GreyD097) */
+.skill-card--glass {
+  position: relative;
+  isolation: isolate;
+  overflow: hidden;
+}
+
+.skill-card--glass::before,
+.skill-card--glass::after {
+  content: "";
+  position: absolute;
+  border-radius: 50%;
+  pointer-events: none;
+  z-index: 0;
+  opacity: 0;
+  transition: opacity 0.35s ease;
+  filter: blur(36px);
+}
+
+.skill-card--glass::before {
+  width: 140px;
+  height: 140px;
+  top: -45%;
+  right: -25%;
+  background: radial-gradient(circle at center, rgba(200, 126, 180, 0.45) 0%, transparent 68%);
+}
+
+.skill-card--glass::after {
+  width: 160px;
+  height: 160px;
+  bottom: -55%;
+  left: -30%;
+  background: radial-gradient(circle at center, rgba(126, 200, 200, 0.38) 0%, transparent 65%);
+}
+
+.skill-card--glass:hover::before,
+.skill-card--glass:hover::after,
+.skill-card--glass:focus-within::before,
+.skill-card--glass:focus-within::after {
+  opacity: 1;
+}
+
+.skill-card--glass > * {
+  position: relative;
+  z-index: 1;
+}
+
+.experience-lead {
+  max-width: 720px;
+  margin-bottom: 20px;
+  color: var(--text-soft);
+  font-size: 14px;
+  line-height: 1.55;
+}
+
+.accordion-stack {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.glass-accordion {
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 16px;
+  background: linear-gradient(
+    145deg,
+    rgba(255, 255, 255, 0.07) 0%,
+    rgba(18, 19, 23, 0.82) 42%,
+    rgba(255, 255, 255, 0.04) 100%
+  );
+  box-shadow: 0 14px 48px rgba(0, 0, 0, 0.32);
+  overflow: hidden;
+  -webkit-backdrop-filter: blur(16px);
+  backdrop-filter: blur(16px);
+}
+
+.glass-accordion__summary {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  padding: 16px 18px;
+  cursor: pointer;
+  list-style: none;
+  position: relative;
+  user-select: none;
+  transition: background 0.2s ease;
+}
+
+.glass-accordion__summary::-webkit-details-marker {
+  display: none;
+}
+
+.glass-accordion__summary:hover {
+  background: rgba(255, 255, 255, 0.05);
+}
+
+.glass-accordion[open] > .glass-accordion__summary {
+  background: rgba(126, 200, 200, 0.06);
+}
+
+.glass-accordion__year {
+  flex-shrink: 0;
+  min-width: 5.75rem;
+  font-family: "DM Mono", monospace;
+  font-size: 12px;
+  font-weight: 500;
+  color: var(--accent);
+  letter-spacing: 0.03em;
+}
+
+.glass-accordion__label {
+  flex: 1;
+  font-family: "Space Grotesk", sans-serif;
+  font-weight: 600;
+  font-size: 14px;
+  line-height: 1.35;
+  color: var(--text-main);
+}
+
+.glass-accordion__chev {
+  flex-shrink: 0;
+  font-size: 22px;
+  color: var(--text-soft);
+  transition: transform 0.3s ease, color 0.2s ease;
+}
+
+.glass-accordion[open] .glass-accordion__chev {
+  transform: rotate(180deg);
+  color: var(--accent);
+}
+
+.glass-accordion__panel {
+  padding: 0 18px 18px;
+  border-top: 1px solid rgba(255, 255, 255, 0.07);
+}
+
+.glass-accordion__note {
+  margin: 12px 0 0;
+  font-size: 13px;
+  line-height: 1.45;
+  color: var(--text-muted);
+}
+
+.glass-accordion__project {
+  margin-top: 16px;
+}
+
+.glass-accordion__project:first-of-type {
+  margin-top: 12px;
+}
+
+.glass-accordion__project-name {
+  font-family: "Space Grotesk", sans-serif;
+  font-weight: 700;
+  font-size: 14px;
+}
+
+.glass-accordion__project-meta {
+  margin: 4px 0 8px;
+  font-size: 12px;
+  line-height: 1.4;
+  color: var(--text-soft);
+}
+
+.glass-accordion__list {
+  margin: 0;
+  padding-left: 1.15rem;
+  color: var(--text-soft);
+  font-size: 13px;
+  line-height: 1.5;
+}
+
+.glass-accordion__list li {
+  margin-bottom: 6px;
+}
+
+.glass-accordion__panel a {
+  color: var(--accent);
+  font-weight: 600;
+  text-decoration: none;
+}
+
+.glass-accordion__panel a:hover {
+  text-decoration: underline;
+}
+
 @media (max-width: 1024px) {
   .page {
     width: min(1220px, 100% - 32px);
@@ -698,5 +884,18 @@ body.modal-open {
 
   .timeline li {
     grid-template-columns: 72px 1fr;
+  }
+
+  .glass-accordion__summary {
+    flex-wrap: wrap;
+    align-items: flex-start;
+  }
+
+  .glass-accordion__year {
+    min-width: auto;
+  }
+
+  .glass-accordion__chev {
+    margin-left: auto;
   }
 }

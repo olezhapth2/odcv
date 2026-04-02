@@ -98,8 +98,16 @@
     var card = skillCardForRef(ref);
     if (!card) return;
     var l = lang();
-    var title = l === "ru" ? card.getAttribute("data-title-ru") : card.getAttribute("data-title-en");
-    var body = l === "ru" ? card.getAttribute("data-body-ru") : card.getAttribute("data-body-en");
+    var pack = window.ODCV_SKILL_BODIES && window.ODCV_SKILL_BODIES[ref];
+    var title;
+    var body;
+    if (pack) {
+      title = l === "ru" ? pack.title_ru : pack.title_en;
+      body = l === "ru" ? pack.body_ru : pack.body_en;
+    } else {
+      title = l === "ru" ? card.getAttribute("data-title-ru") : card.getAttribute("data-title-en");
+      body = l === "ru" ? card.getAttribute("data-body-ru") : card.getAttribute("data-body-en");
+    }
     modalTitle.textContent = title || "";
     modalBody.innerHTML = "";
     var p = document.createElement("p");
