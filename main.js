@@ -14,11 +14,62 @@
   var modalDialog = modal ? modal.querySelector(".modal__dialog") : null;
 
   function lang() {
-    return root.lang === "ru" ? "ru" : "en";
+    return root.getAttribute("lang") === "ru" ? "ru" : "en";
   }
 
   function t(en, ru) {
     return lang() === "ru" ? ru : en;
+  }
+
+  function applyI18n() {
+    document.querySelectorAll(".i18n").forEach(function (el) {
+      var en = el.getAttribute("data-en");
+      var ru = el.getAttribute("data-ru");
+      if (en == null || ru == null) return;
+      el.textContent = lang() === "ru" ? ru : en;
+    });
+    document.body.classList.toggle("is-lang-ru", lang() === "ru");
+    document.body.classList.toggle("is-lang-en", lang() === "en");
+    refreshModalIfOpen();
+  }
+
+  function syncSkillDataFromJSON() {
+    var B = window.ODCV_SKILL_BODIES;
+    if (!B) return;
+    Object.keys(B).forEach(function (k) {
+      var card = document.querySelector('.skill-card[data-skill="' + k + '"]');
+      if (!card) return;
+      var p = B[k];
+      card.setAttribute("data-title-en", p.title_en);
+      card.setAttribute("data-title-ru", p.title_ru);
+      card.setAttribute("data-body-en", p.body_en);
+      card.setAttribute("data-body-ru", p.body_ru);
+    });
+  }
+
+  function injectUiverseLights() {
+    var selectors = [".skill-card", ".work-card.work-card--interactive"];
+    selectors.forEach(function (sel) {
+      document.querySelectorAll(sel).forEach(function (card) {
+        if (card.querySelector(".uiverse-card__lights")) return;
+        card.classList.add("uiverse-card");
+        var lights = document.createElement("div");
+        lights.className = "uiverse-card__lights";
+        lights.setAttribute("aria-hidden", "true");
+        for (var i = 1; i <= 5; i++) {
+          var span = document.createElement("span");
+          span.className = "uiverse-card__light uiverse-card__light--" + i;
+          lights.appendChild(span);
+        }
+        var inner = document.createElement("div");
+        inner.className = "uiverse-card__inner";
+        while (card.firstChild) {
+          inner.appendChild(card.firstChild);
+        }
+        card.appendChild(lights);
+        card.appendChild(inner);
+      });
+    });
   }
 
   function showToast() {
@@ -88,6 +139,8 @@
     modalLinkWrap.hidden = true;
     modalLink.href = "#";
     modalLink.textContent = "";
+    modal.removeAttribute("data-open-type");
+    modal.removeAttribute("data-open-ref");
   }
 
   function skillCardForRef(ref) {
@@ -98,16 +151,8 @@
     var card = skillCardForRef(ref);
     if (!card) return;
     var l = lang();
-    var pack = window.ODCV_SKILL_BODIES && window.ODCV_SKILL_BODIES[ref];
-    var title;
-    var body;
-    if (pack) {
-      title = l === "ru" ? pack.title_ru : pack.title_en;
-      body = l === "ru" ? pack.body_ru : pack.body_en;
-    } else {
-      title = l === "ru" ? card.getAttribute("data-title-ru") : card.getAttribute("data-title-en");
-      body = l === "ru" ? card.getAttribute("data-body-ru") : card.getAttribute("data-body-en");
-    }
+    var title = l === "ru" ? card.getAttribute("data-title-ru") : card.getAttribute("data-title-en");
+    var body = l === "ru" ? card.getAttribute("data-body-ru") : card.getAttribute("data-body-en");
     modalTitle.textContent = title || "";
     modalBody.innerHTML = "";
     var p = document.createElement("p");
@@ -115,6 +160,8 @@
     p.textContent = body || "";
     modalBody.appendChild(p);
     modalLinkWrap.hidden = true;
+    modal.setAttribute("data-open-type", "skill");
+    modal.setAttribute("data-open-ref", ref);
     openModal();
   }
 
@@ -145,68 +192,88 @@
     } else {
       modalLinkWrap.hidden = true;
     }
+    var pid = card.getAttribute("data-project");
+    if (pid) {
+      modal.setAttribute("data-open-type", "project");
+      modal.setAttribute("data-open-ref", pid);
+    }
     openModal();
   }
 
-  document.querySelectorAll(".skill-strip__icon-link").forEach(function (a) {
-    a.addEventListener("click", function (e) {
-      e.stopPropagation();
-    });
-  });
-
-  document.querySelectorAll(".skill-strip").forEach(function (strip) {
-    strip.addEventListener("click", function () {
-      var ref = strip.getAttribute("data-skill-ref");
-      if (ref) openSkillModal(ref);
-    });
-  });
-
-  document.querySelectorAll(".skill-card[data-skill]").forEach(function (card) {
-    card.addEventListener("click", function () {
-      openSkillModal(card.getAttribute("data-skill"));
-    });
-  });
-
-  document.querySelectorAll(".work-card[data-project]").forEach(function (card) {
-    card.addEventListener("click", function () {
-      openProjectModal(card);
-    });
-  });
-
-  document.querySelectorAll(".section__copy-link").forEach(function (btn) {
-    btn.addEventListener("click", function () {
-      var hash = btn.getAttribute("data-anchor");
-      if (hash) copyAnchor(hash);
-    });
-  });
-
-  if (modalClose) modalClose.addEventListener("click", closeModal);
-  if (modal) {
-    modal.addEventListener("click", function (e) {
-      if (e.target === modal) closeModal();
-    });
+  function refreshModalIfOpen() {
+    if (!modal || modal.hidden) return;
+    var type = modal.getAttribute("data-open-type");
+    var ref = modal.getAttribute("data-open-ref");
+    if (!type || !ref) return;
+    if (type === "skill") {
+      openSkillModal(ref);
+    } else if (type === "project") {
+      var c = document.querySelector('.work-card[data-project="' + ref + '"]');
+      if (c) openProjectModal(c);
+    }
   }
 
-  document.querySelectorAll(".skill-card__icon-link").forEach(function (a) {
-    a.addEventListener("click", function (e) {
-      e.stopPropagation();
+  function bindUi() {
+    document.querySelectorAll(".skill-strip__icon-link").forEach(function (a) {
+      a.addEventListener("click", function (e) {
+        e.stopPropagation();
+      });
     });
-  });
-  document.addEventListener("keydown", function (e) {
-    if (e.key === "Escape" && modal && !modal.hidden) closeModal();
-  });
 
-  if (backTopEl) {
-    backTopEl.addEventListener("click", function () {
-      window.scrollTo({ top: 0, behavior: "smooth" });
+    document.querySelectorAll(".skill-strip").forEach(function (strip) {
+      strip.addEventListener("click", function () {
+        var ref = strip.getAttribute("data-skill-ref");
+        if (ref) openSkillModal(ref);
+      });
     });
-  }
 
-  document.querySelectorAll(".lang-toggle button").forEach(function (btn) {
-    btn.addEventListener("click", function () {
-      var lng = btn.getAttribute("data-set-lang");
-      if (lng) {
-        root.lang = lng;
+    document.querySelectorAll(".skill-card[data-skill]").forEach(function (card) {
+      card.addEventListener("click", function () {
+        openSkillModal(card.getAttribute("data-skill"));
+      });
+    });
+
+    document.querySelectorAll(".work-card[data-project]").forEach(function (card) {
+      card.addEventListener("click", function () {
+        openProjectModal(card);
+      });
+    });
+
+    document.querySelectorAll(".section__copy-link").forEach(function (btn) {
+      btn.addEventListener("click", function () {
+        var hash = btn.getAttribute("data-anchor");
+        if (hash) copyAnchor(hash);
+      });
+    });
+
+    if (modalClose) modalClose.addEventListener("click", closeModal);
+    if (modal) {
+      modal.addEventListener("click", function (e) {
+        if (e.target === modal) closeModal();
+      });
+    }
+
+    document.querySelectorAll(".skill-card__icon-link").forEach(function (a) {
+      a.addEventListener("click", function (e) {
+        e.stopPropagation();
+      });
+    });
+
+    document.addEventListener("keydown", function (e) {
+      if (e.key === "Escape" && modal && !modal.hidden) closeModal();
+    });
+
+    if (backTopEl) {
+      backTopEl.addEventListener("click", function () {
+        window.scrollTo({ top: 0, behavior: "smooth" });
+      });
+    }
+
+    document.querySelectorAll(".lang-toggle button").forEach(function (btn) {
+      btn.addEventListener("click", function () {
+        var lng = btn.getAttribute("data-set-lang");
+        if (!lng) return;
+        root.setAttribute("lang", lng);
         try {
           localStorage.setItem("odcv-lang", lng);
         } catch (e) {
@@ -215,34 +282,47 @@
         document.querySelectorAll(".lang-toggle button").forEach(function (b) {
           b.setAttribute("aria-pressed", b.getAttribute("data-set-lang") === lng ? "true" : "false");
         });
-      }
-    });
-  });
-
-  try {
-    var saved = localStorage.getItem("odcv-lang");
-    if (saved === "ru" || saved === "en") {
-      root.lang = saved;
-      document.querySelectorAll(".lang-toggle button").forEach(function (b) {
-        b.setAttribute("aria-pressed", b.getAttribute("data-set-lang") === saved ? "true" : "false");
+        applyI18n();
       });
-    }
-  } catch (e) {
-    /* ignore */
+    });
+
+    window.addEventListener("scroll", updateScrollProgress, { passive: true });
+    window.addEventListener("resize", updateScrollProgress);
+
+    document.querySelectorAll('a[href^="#"]').forEach(function (a) {
+      var id = a.getAttribute("href").slice(1);
+      if (!id) return;
+      var target = document.getElementById(id);
+      if (!target) return;
+      a.addEventListener("click", function (e) {
+        e.preventDefault();
+        target.scrollIntoView({ behavior: "smooth", block: "start" });
+      });
+    });
   }
 
-  window.addEventListener("scroll", updateScrollProgress, { passive: true });
-  window.addEventListener("resize", updateScrollProgress);
-  updateScrollProgress();
+  function init() {
+    syncSkillDataFromJSON();
+    injectUiverseLights();
+    bindUi();
+    try {
+      var saved = localStorage.getItem("odcv-lang");
+      if (saved === "ru" || saved === "en") {
+        root.setAttribute("lang", saved);
+        document.querySelectorAll(".lang-toggle button").forEach(function (b) {
+          b.setAttribute("aria-pressed", b.getAttribute("data-set-lang") === saved ? "true" : "false");
+        });
+      }
+    } catch (e) {
+      /* ignore */
+    }
+    applyI18n();
+    updateScrollProgress();
+  }
 
-  document.querySelectorAll('a[href^="#"]').forEach(function (a) {
-    var id = a.getAttribute("href").slice(1);
-    if (!id || id === "modal") return;
-    var target = document.getElementById(id);
-    if (!target) return;
-    a.addEventListener("click", function (e) {
-      e.preventDefault();
-      target.scrollIntoView({ behavior: "smooth", block: "start" });
-    });
-  });
+  if (document.readyState === "loading") {
+    document.addEventListener("DOMContentLoaded", init);
+  } else {
+    init();
+  }
 })();

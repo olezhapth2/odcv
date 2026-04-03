@@ -182,6 +182,10 @@ h2 {
   gap: 16px;
 }
 
+.work-grid--matrix {
+  grid-template-columns: repeat(auto-fill, minmax(min(100%, 300px), 1fr));
+}
+
 .work-card {
   border: 1px solid rgba(255, 255, 255, 0.08);
   border-radius: 12px;
@@ -448,8 +452,13 @@ body.modal-open {
   display: flex;
   gap: 10px;
   overflow-x: auto;
-  padding-bottom: 6px;
+  padding: 4px 4px 10px;
+  scroll-snap-type: x proximity;
+  scroll-padding-inline: 8px;
+  -webkit-overflow-scrolling: touch;
   scrollbar-width: thin;
+  mask-image: linear-gradient(to right, transparent, #000 12px, #000 calc(100% - 12px), transparent);
+  mask-size: 100% 100%;
 }
 
 .skill-strip {
@@ -457,6 +466,7 @@ body.modal-open {
   align-items: center;
   gap: 10px;
   flex: 0 0 auto;
+  scroll-snap-align: start;
   padding: 10px 14px;
   border-radius: 999px;
   border: 1px solid rgba(255, 255, 255, 0.08);
@@ -666,51 +676,115 @@ body.modal-open {
   text-decoration: underline;
 }
 
-/* Glass skill cards — лёгкий glassmorphism в духе интерактивных glass-кнопок (напр. Uiverse / GreyD097) */
-.skill-card--glass {
+/* Карточки: мягкие «световые» слои в духе Uiverse splendid-penguin (движущиеся блики) */
+.uiverse-card {
   position: relative;
   isolation: isolate;
   overflow: hidden;
 }
 
-.skill-card--glass::before,
-.skill-card--glass::after {
-  content: "";
+.uiverse-card__lights {
+  position: absolute;
+  inset: -35%;
+  z-index: 0;
+  pointer-events: none;
+  overflow: visible;
+}
+
+.uiverse-card__light {
   position: absolute;
   border-radius: 50%;
-  pointer-events: none;
-  z-index: 0;
-  opacity: 0;
-  transition: opacity 0.35s ease;
-  filter: blur(36px);
+  filter: blur(48px);
+  opacity: 0.42;
+  mix-blend-mode: screen;
+  animation: odcv-uiverse-drift 14s ease-in-out infinite;
 }
 
-.skill-card--glass::before {
-  width: 140px;
-  height: 140px;
-  top: -45%;
-  right: -25%;
-  background: radial-gradient(circle at center, rgba(200, 126, 180, 0.45) 0%, transparent 68%);
+.uiverse-card__light--1 {
+  width: 42%;
+  height: 48%;
+  left: -8%;
+  top: -12%;
+  background: radial-gradient(circle, rgba(200, 126, 180, 0.85) 0%, transparent 72%);
+  animation-duration: 16s;
 }
 
-.skill-card--glass::after {
-  width: 160px;
-  height: 160px;
-  bottom: -55%;
-  left: -30%;
-  background: radial-gradient(circle at center, rgba(126, 200, 200, 0.38) 0%, transparent 65%);
+.uiverse-card__light--2 {
+  width: 38%;
+  height: 42%;
+  right: -6%;
+  top: 5%;
+  background: radial-gradient(circle, rgba(126, 200, 200, 0.75) 0%, transparent 70%);
+  animation-delay: -3s;
+  animation-duration: 13s;
 }
 
-.skill-card--glass:hover::before,
-.skill-card--glass:hover::after,
-.skill-card--glass:focus-within::before,
-.skill-card--glass:focus-within::after {
-  opacity: 1;
+.uiverse-card__light--3 {
+  width: 36%;
+  height: 40%;
+  left: 20%;
+  bottom: -18%;
+  background: radial-gradient(circle, rgba(140, 160, 255, 0.55) 0%, transparent 68%);
+  animation-delay: -6s;
+  animation-duration: 18s;
 }
 
-.skill-card--glass > * {
+.uiverse-card__light--4 {
+  width: 28%;
+  height: 32%;
+  right: 18%;
+  bottom: 8%;
+  background: radial-gradient(circle, rgba(255, 200, 160, 0.35) 0%, transparent 65%);
+  animation-delay: -2s;
+  animation-duration: 11s;
+}
+
+.uiverse-card__light--5 {
+  width: 22%;
+  height: 26%;
+  left: 45%;
+  top: 35%;
+  background: radial-gradient(circle, rgba(126, 200, 200, 0.45) 0%, transparent 62%);
+  animation-delay: -8s;
+  animation-duration: 15s;
+}
+
+.uiverse-card:hover .uiverse-card__light,
+.uiverse-card:focus-within .uiverse-card__light {
+  opacity: 0.55;
+}
+
+.uiverse-card__inner {
   position: relative;
   z-index: 1;
+}
+
+@keyframes odcv-uiverse-drift {
+  0%,
+  100% {
+    transform: translate3d(0, 0, 0) scale(1);
+  }
+  25% {
+    transform: translate3d(12%, 6%, 0) scale(1.06);
+  }
+  50% {
+    transform: translate3d(-8%, 14%, 0) scale(0.94);
+  }
+  75% {
+    transform: translate3d(6%, -10%, 0) scale(1.03);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .uiverse-card__light {
+    animation: none;
+    opacity: 0.28;
+  }
+
+  .uiverse-card:hover .uiverse-card__light,
+  .uiverse-card:focus-within .uiverse-card__light {
+    opacity: 0.32;
+  }
 }
 
 .experience-lead {
@@ -800,6 +874,11 @@ body.modal-open {
 .glass-accordion__panel {
   padding: 0 18px 18px;
   border-top: 1px solid rgba(255, 255, 255, 0.07);
+}
+
+.glass-accordion__panel-inner > p:first-child,
+.glass-accordion__panel-inner > ul:first-child {
+  margin-top: 12px;
 }
 
 .glass-accordion__note {

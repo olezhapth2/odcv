@@ -60,18 +60,6 @@ window.ODCV_SKILL_BODIES = {
     "title_ru": "Менторство и преподавание",
     "body_en": "Teaching made me a sharper designer Thousands of students reached CONTENTED · Skillbox Junior → mid-level growth track I've been building and teaching design curricula for two of Russia's largest online design schools since 2020. What I got from that is something you can't fake: the ability to explain why something works, not just that it does. Mentoring forces precision. When a junior designer shows you a layout that feels wrong and asks why, \"it feels off\" doesn't cut it. You have to name the principle, connect it to the user's goal, and show how to fix it. That process made me a better designer. Inside product teams, I mentor through work — reviewing decisions, asking the question the designer didn't think to ask, and modeling what good product thinking looks like in practice. I also rolled out AI workflow training to a design team from scratch: structured, documented, with real adoption outcomes. Project context →  CONTENTED (4 years) + Skillbox (2024–present) — developed and taught graphic design and UX/UI curricula. Reached thousands of students across both platforms. Adapted and onboarded junior mentors, ran public workshops and marketing sessions for prospective students.",
     "body_ru": "Преподавание делает дизайнера точнее. Тысячи студентов, CONTENTED · Skillbox, трек junior → mid. С 2020 — программы графдизайна и UX/UI; менторство через работу и онбординг младших менторов. Кейс CONTENTED (4 года) + Skillbox (2024–наст.) — курсы, адаптация менторов, масштаб аудитории."
-  },
-  "branding-visual": {
-    "title_en": "Branding & Visual Craft",
-    "title_ru": "Брендинг и визуальный крафт",
-    "body_en": "Roots in identity and print before product UI: logos and palettes for fashion and B2B, illustration sets and packaging prepress, navigation systems for retail, interactive map interfaces, and close work with brand teams. This is where spacing, typography, and consistency habits were formed — the same discipline later applied to design systems and white-label rollouts.",
-    "body_ru": "Корни в айдентике и печати до продуктового UI: логотипы и палитры (мода, B2B), иллюстрации и допечатка упаковки, навигация в ритейле, интерактивные карты, плотная работа с бренд-командами. Оттуда же привычка к типографике, сетке и консистентности — та же дисциплина позже в дизайн-системах и white-label."
-  },
-  "content-community": {
-    "title_en": "Content & Community Systems",
-    "title_ru": "Контент и комьюнити-системы",
-    "body_en": "Built educational Telegram networks (@AStudy, C4Study, PPStudy and related channels): network redesign, posting ops, audience growth past 50K, course launch, and process fixes for editorial throughput. Bridges brand voice, curriculum, and distribution — the same muscles used when scaling internal design education and AI content pipelines.",
-    "body_ru": "Сеть образовательных Telegram-каналов (@AStudy, C4Study, PPStudy и др.): редизайн сетки каналов, процессы постинга, рост аудитории 50K+, запуск курса, оптимизация редакционных процессов. Связка голоса бренда, программы и дистрибуции — те же навыки, что и при масштабировании внутреннего обучения дизайна и AI-контент-пайплайнов."
   }
 };
 })();
