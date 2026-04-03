@@ -52,7 +52,7 @@
     selectors.forEach(function (sel) {
       document.querySelectorAll(sel).forEach(function (card) {
         if (card.querySelector(".uiverse-card__lights")) return;
-        card.classList.add("uiverse-card");
+        card.classList.add("uiverse-card", "vaib-card");
         var lights = document.createElement("div");
         lights.className = "uiverse-card__lights";
         lights.setAttribute("aria-hidden", "true");
@@ -69,6 +69,38 @@
         card.appendChild(lights);
         card.appendChild(inner);
       });
+    });
+  }
+
+  function initVaibParallax() {
+    document.querySelectorAll(".vaib-card").forEach(function (card) {
+      var pending = null;
+      card.style.setProperty("--vaib-rx", "0deg");
+      card.style.setProperty("--vaib-ry", "0deg");
+      card.addEventListener(
+        "mousemove",
+        function (e) {
+          if (pending) cancelAnimationFrame(pending);
+          pending = requestAnimationFrame(function () {
+            pending = null;
+            var r = card.getBoundingClientRect();
+            if (r.width <= 0 || r.height <= 0) return;
+            var x = (e.clientX - r.left) / r.width - 0.5;
+            var y = (e.clientY - r.top) / r.height - 0.5;
+            card.style.setProperty("--vaib-ry", x * 15 + "deg");
+            card.style.setProperty("--vaib-rx", -y * 11 + "deg");
+          });
+        },
+        { passive: true }
+      );
+      card.addEventListener(
+        "mouseleave",
+        function () {
+          card.style.setProperty("--vaib-ry", "0deg");
+          card.style.setProperty("--vaib-rx", "0deg");
+        },
+        { passive: true }
+      );
     });
   }
 
@@ -304,6 +336,7 @@
   function init() {
     syncSkillDataFromJSON();
     injectUiverseLights();
+    initVaibParallax();
     bindUi();
     try {
       var saved = localStorage.getItem("odcv-lang");

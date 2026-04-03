@@ -759,6 +759,51 @@ body.modal-open {
   z-index: 1;
 }
 
+/* Vaib: 3D-параллакс + переливающийся градиент (реф. Uiverse splendid-penguin) */
+.vaib-card.uiverse-card .uiverse-card__inner {
+  border-radius: inherit;
+  transform: perspective(920px) rotateX(var(--vaib-rx, 0deg)) rotateY(var(--vaib-ry, 0deg))
+    translateZ(0);
+  transition: transform 0.22s ease-out;
+  transform-style: preserve-3d;
+}
+
+.vaib-card.uiverse-card .uiverse-card__inner::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+  border-radius: inherit;
+  pointer-events: none;
+  background: linear-gradient(
+    118deg,
+    transparent 0%,
+    rgba(255, 255, 255, 0.05) 34%,
+    rgba(126, 200, 200, 0.2) 47%,
+    rgba(200, 126, 180, 0.16) 54%,
+    rgba(140, 160, 255, 0.1) 62%,
+    transparent 100%
+  );
+  background-size: 260% 260%;
+  animation: odcv-vaib-sheen 8s ease-in-out infinite;
+  opacity: 0.85;
+}
+
+.vaib-card.uiverse-card:hover .uiverse-card__inner::before,
+.vaib-card.uiverse-card:focus-within .uiverse-card__inner::before {
+  opacity: 1;
+}
+
+@keyframes odcv-vaib-sheen {
+  0%,
+  100% {
+    background-position: 8% 18%;
+  }
+  50% {
+    background-position: 92% 82%;
+  }
+}
+
 @keyframes odcv-uiverse-drift {
   0%,
   100% {
@@ -785,6 +830,102 @@ body.modal-open {
   .uiverse-card:focus-within .uiverse-card__light {
     opacity: 0.32;
   }
+
+  .vaib-card.uiverse-card .uiverse-card__inner {
+    transform: none !important;
+    transition: none;
+  }
+
+  .vaib-card.uiverse-card .uiverse-card__inner::before {
+    animation: none;
+    opacity: 0.35;
+    background-position: 50% 50%;
+  }
+}
+
+.bio-panel--ru {
+  display: none;
+}
+
+.bio-panel--en {
+  display: block;
+}
+
+body.is-lang-ru .bio-panel--en {
+  display: none;
+}
+
+body.is-lang-ru .bio-panel--ru {
+  display: block;
+}
+
+body.is-lang-en .bio-panel--en {
+  display: block;
+}
+
+body.is-lang-en .bio-panel--ru {
+  display: none;
+}
+
+.exp-flow {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: flex-start;
+  gap: 10px 14px;
+  margin-bottom: 14px;
+  padding: 11px 14px;
+  border-radius: 12px;
+  border: 1px solid rgba(126, 200, 200, 0.22);
+  background: linear-gradient(
+    125deg,
+    rgba(126, 200, 200, 0.09) 0%,
+    rgba(18, 19, 23, 0.55) 45%,
+    rgba(200, 126, 180, 0.08) 100%
+  );
+}
+
+.exp-flow__tag {
+  flex-shrink: 0;
+  margin: 0;
+  padding: 5px 9px;
+  border-radius: 8px;
+  background: rgba(0, 0, 0, 0.28);
+  font: 700 10px/1.2 "Space Grotesk", sans-serif;
+  letter-spacing: 0.07em;
+  text-transform: uppercase;
+  color: var(--accent);
+}
+
+.exp-flow__text {
+  flex: 1;
+  min-width: min(100%, 220px);
+  margin: 0;
+  font-size: 12px;
+  line-height: 1.5;
+  color: var(--text-soft);
+}
+
+.exp-project {
+  margin-top: 18px;
+}
+
+.exp-project:first-child {
+  margin-top: 0;
+}
+
+.exp-project__name {
+  margin: 0;
+  font-family: "Space Grotesk", sans-serif;
+  font-weight: 700;
+  font-size: 14px;
+  color: var(--text-main);
+}
+
+.exp-project__meta {
+  margin: 5px 0 8px;
+  font-size: 12px;
+  line-height: 1.45;
+  color: var(--text-muted);
 }
 
 .experience-lead {
