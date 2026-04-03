@@ -16,7 +16,13 @@
     />
     <link rel="stylesheet" href="./styles.css" />
   </head>
-  <body>
+  <body class="lang-en">
+    <div class="bg-blobs" aria-hidden="true">
+      <div class="bg-blob bg-blob--1"></div>
+      <div class="bg-blob bg-blob--2"></div>
+      <div class="bg-blob bg-blob--3"></div>
+      <div class="bg-blob bg-blob--4"></div>
+    </div>
     <div
       id="scrollProgress"
       class="scroll-progress"
@@ -38,12 +44,14 @@
         <p id="modalLinkWrap" class="modal__link-wrap" hidden>
           <a id="modalLink" class="modal__link" href="#" target="_blank" rel="noopener noreferrer"></a>
         </p>
+        <p id="modalCta" class="modal__cta" hidden>
+          <a class="modal__cta-link" href="mailto:olegdevyatow@gmail.com">olegdevyatow@gmail.com</a>
+        </p>
       </div>
     </div>
 
     <main class="page">
       <section class="hero">
-        <div class="hero__glow hero__glow--pink"></div>
         <div class="hero__bar">
           <div class="hero__topline">
             <a
@@ -65,443 +73,97 @@
 
         <h1>Oleg Devyatov</h1>
         <p
-          class="hero__description i18n"
-          data-en="Senior Product Designer · UX · UI — 9+ years at the intersection of UX strategy, design systems, and AI workflows. Full-cycle products, scaled teams, internal tools that save hundreds of hours."
-          data-ru="Senior Product Designer · UX · UI — 9+ лет на стыке UX-стратегии, дизайн-систем и AI-процессов. Полный цикл продуктов, масштабирование команд, внутренние инструменты, которые экономят сотни часов."
+          class="hero__role i18n"
+          data-en="Senior Product Designer · UX · UI"
+          data-ru="Senior Product Designer · UX · UI"
         ></p>
+        <p
+          class="hero__description i18n"
+          data-en="9+ years at the intersection of UX strategy, design systems, and AI workflows — full-cycle products, scaled teams, internal tools that save hundreds of hours."
+          data-ru="9+ лет на стыке UX-стратегии, дизайн-систем и AI-процессов — полный цикл продуктов, масштабирование команд, внутренние инструменты, которые экономят сотни часов."
+        ></p>
+
+        <div class="hero-scroll" aria-label="Competency carousel">
+          <div class="hero-scroll-inner">
+            <div class="hero-lane-card" role="button" tabindex="0" data-skill-ref="product-thinking">
+              <a class="hero-lane-card__icon-link" href="https://fonts.google.com/icons?q=psychology" target="_blank" rel="noopener noreferrer" aria-label="Google Fonts Icons: psychology"><span class="material-symbols-rounded" aria-hidden="true">psychology</span></a>
+              <span class="hero-lane-card__label i18n" data-en="Product Thinking" data-ru="Продуктовое мышление">Product Thinking</span>
+            </div>
+            <div class="hero-lane-card" role="button" tabindex="0" data-skill-ref="ux-research">
+              <a class="hero-lane-card__icon-link" href="https://fonts.google.com/icons?q=biotech" target="_blank" rel="noopener noreferrer" aria-label="Google Fonts Icons: biotech"><span class="material-symbols-rounded" aria-hidden="true">biotech</span></a>
+              <span class="hero-lane-card__label i18n" data-en="UX Research" data-ru="UX-исследования">UX Research</span>
+            </div>
+            <div class="hero-lane-card" role="button" tabindex="0" data-skill-ref="information-architecture">
+              <a class="hero-lane-card__icon-link" href="https://fonts.google.com/icons?q=account_tree" target="_blank" rel="noopener noreferrer" aria-label="Google Fonts Icons: account_tree"><span class="material-symbols-rounded" aria-hidden="true">account_tree</span></a>
+              <span class="hero-lane-card__label i18n" data-en="Information Architecture" data-ru="Информационная архитектура">Information Architecture</span>
+            </div>
+            <div class="hero-lane-card" role="button" tabindex="0" data-skill-ref="design-systems">
+              <a class="hero-lane-card__icon-link" href="https://fonts.google.com/icons?q=hub" target="_blank" rel="noopener noreferrer" aria-label="Google Fonts Icons: hub"><span class="material-symbols-rounded" aria-hidden="true">hub</span></a>
+              <span class="hero-lane-card__label i18n" data-en="Design Systems" data-ru="Дизайн-системы">Design Systems</span>
+            </div>
+            <div class="hero-lane-card" role="button" tabindex="0" data-skill-ref="ai-workflow">
+              <a class="hero-lane-card__icon-link" href="https://fonts.google.com/icons?q=smart_toy" target="_blank" rel="noopener noreferrer" aria-label="Google Fonts Icons: smart_toy"><span class="material-symbols-rounded" aria-hidden="true">smart_toy</span></a>
+              <span class="hero-lane-card__label i18n" data-en="AI-Augmented Workflow" data-ru="Процесс с AI">AI-Augmented Workflow</span>
+            </div>
+            <div class="hero-lane-card" role="button" tabindex="0" data-skill-ref="agentive-ux">
+              <a class="hero-lane-card__icon-link" href="https://fonts.google.com/icons?q=gamepad" target="_blank" rel="noopener noreferrer" aria-label="Google Fonts Icons: gamepad"><span class="material-symbols-rounded" aria-hidden="true">gamepad</span></a>
+              <span class="hero-lane-card__label i18n" data-en="Agentive UX" data-ru="Агентный UX">Agentive UX</span>
+            </div>
+            <div class="hero-lane-card" role="button" tabindex="0" data-skill-ref="design-ops">
+              <a class="hero-lane-card__icon-link" href="https://fonts.google.com/icons?q=settings_suggest" target="_blank" rel="noopener noreferrer" aria-label="Google Fonts Icons: settings_suggest"><span class="material-symbols-rounded" aria-hidden="true">settings_suggest</span></a>
+              <span class="hero-lane-card__label i18n" data-en="Design Ops" data-ru="Design Ops">Design Ops</span>
+            </div>
+            <div class="hero-lane-card" role="button" tabindex="0" data-skill-ref="ecosystem">
+              <a class="hero-lane-card__icon-link" href="https://fonts.google.com/icons?q=language" target="_blank" rel="noopener noreferrer" aria-label="Google Fonts Icons: language"><span class="material-symbols-rounded" aria-hidden="true">language</span></a>
+              <span class="hero-lane-card__label i18n" data-en="Ecosystem Design" data-ru="Дизайн экосистем">Ecosystem Design</span>
+            </div>
+            <div class="hero-lane-card" role="button" tabindex="0" data-skill-ref="cross-functional">
+              <a class="hero-lane-card__icon-link" href="https://fonts.google.com/icons?q=groups" target="_blank" rel="noopener noreferrer" aria-label="Google Fonts Icons: groups"><span class="material-symbols-rounded" aria-hidden="true">groups</span></a>
+              <span class="hero-lane-card__label i18n" data-en="Cross-functional Leadership" data-ru="Кросс-функциональное лидерство">Cross-functional Leadership</span>
+            </div>
+            <div class="hero-lane-card" role="button" tabindex="0" data-skill-ref="mentorship">
+              <a class="hero-lane-card__icon-link" href="https://fonts.google.com/icons?q=school" target="_blank" rel="noopener noreferrer" aria-label="Google Fonts Icons: school"><span class="material-symbols-rounded" aria-hidden="true">school</span></a>
+              <span class="hero-lane-card__label i18n" data-en="Mentorship &amp; Education" data-ru="Менторство и обучение">Mentorship &amp; Education</span>
+            </div>
+          </div>
+        </div>
 
         <div class="hero__contacts">
           <a class="pill pill--light" href="mailto:olegdevyatow@gmail.com">olegdevyatow@gmail.com</a>
-          <a class="pill" href="https://t.me/olegdevyatow" target="_blank" rel="noopener noreferrer"
-            >Telegram · @olegdevyatow</a
-          >
-          <a
-            class="pill"
-            href="https://www.linkedin.com/in/oleg-devyatow-653584367/"
-            target="_blank"
-            rel="noopener noreferrer"
-            >LinkedIn</a
-          >
-          <a class="pill" href="https://www.behance.net/reesoonki" target="_blank" rel="noopener noreferrer"
-            >behance.net/reesoonki</a
-          >
-        </div>
-
-        <div class="skill-strip-row" aria-label="Competency shortcuts">
-          <button type="button" class="skill-strip" data-skill-ref="product-thinking">
-            <a
-              class="skill-strip__icon-link"
-              href="https://fonts.google.com/icons?q=psychology"
-              target="_blank"
-              rel="noopener noreferrer"
-              aria-label="Google Fonts Icons: psychology"
-              ><span class="material-symbols-rounded" aria-hidden="true">psychology</span></a
-            >
-            <span class="skill-strip__label i18n" data-en="Product Thinking" data-ru="Продуктовое мышление">Product Thinking</span>
-          </button>
-          <button type="button" class="skill-strip" data-skill-ref="ux-research">
-            <a
-              class="skill-strip__icon-link"
-              href="https://fonts.google.com/icons?q=biotech"
-              target="_blank"
-              rel="noopener noreferrer"
-              aria-label="Google Fonts Icons: biotech"
-              ><span class="material-symbols-rounded" aria-hidden="true">biotech</span></a
-            >
-            <span class="skill-strip__label i18n" data-en="UX Research" data-ru="UX-исследования">UX Research</span>
-          </button>
-          <button type="button" class="skill-strip" data-skill-ref="information-architecture">
-            <a
-              class="skill-strip__icon-link"
-              href="https://fonts.google.com/icons?q=account_tree"
-              target="_blank"
-              rel="noopener noreferrer"
-              aria-label="Google Fonts Icons: account_tree"
-              ><span class="material-symbols-rounded" aria-hidden="true">account_tree</span></a
-            >
-            <span class="skill-strip__label i18n" data-en="Information Architecture" data-ru="Информационная архитектура">Information Architecture</span>
-          </button>
-          <button type="button" class="skill-strip" data-skill-ref="design-systems">
-            <a
-              class="skill-strip__icon-link"
-              href="https://fonts.google.com/icons?q=hub"
-              target="_blank"
-              rel="noopener noreferrer"
-              aria-label="Google Fonts Icons: hub"
-              ><span class="material-symbols-rounded" aria-hidden="true">hub</span></a
-            >
-            <span class="skill-strip__label i18n" data-en="Design Systems" data-ru="Дизайн-системы">Design Systems</span>
-          </button>
-          <button type="button" class="skill-strip" data-skill-ref="ai-workflow">
-            <a
-              class="skill-strip__icon-link"
-              href="https://fonts.google.com/icons?q=smart_toy"
-              target="_blank"
-              rel="noopener noreferrer"
-              aria-label="Google Fonts Icons: smart_toy"
-              ><span class="material-symbols-rounded" aria-hidden="true">smart_toy</span></a
-            >
-            <span class="skill-strip__label i18n" data-en="AI-Augmented Workflow" data-ru="Процесс с AI">AI-Augmented Workflow</span>
-          </button>
-          <button type="button" class="skill-strip" data-skill-ref="agentive-ux">
-            <a
-              class="skill-strip__icon-link"
-              href="https://fonts.google.com/icons?q=gamepad"
-              target="_blank"
-              rel="noopener noreferrer"
-              aria-label="Google Fonts Icons: gamepad"
-              ><span class="material-symbols-rounded" aria-hidden="true">gamepad</span></a
-            >
-            <span class="skill-strip__label i18n" data-en="Agentive UX" data-ru="Агентный UX">Agentive UX</span>
-          </button>
-          <button type="button" class="skill-strip" data-skill-ref="design-ops">
-            <a
-              class="skill-strip__icon-link"
-              href="https://fonts.google.com/icons?q=settings_suggest"
-              target="_blank"
-              rel="noopener noreferrer"
-              aria-label="Google Fonts Icons: settings_suggest"
-              ><span class="material-symbols-rounded" aria-hidden="true">settings_suggest</span></a
-            >
-            <span class="skill-strip__label i18n" data-en="Design Ops" data-ru="Design Ops">Design Ops</span>
-          </button>
-          <button type="button" class="skill-strip" data-skill-ref="ecosystem">
-            <a
-              class="skill-strip__icon-link"
-              href="https://fonts.google.com/icons?q=language"
-              target="_blank"
-              rel="noopener noreferrer"
-              aria-label="Google Fonts Icons: language"
-              ><span class="material-symbols-rounded" aria-hidden="true">language</span></a
-            >
-            <span class="skill-strip__label i18n" data-en="Ecosystem Design" data-ru="Дизайн экосистем">Ecosystem Design</span>
-          </button>
-          <button type="button" class="skill-strip" data-skill-ref="cross-functional">
-            <a
-              class="skill-strip__icon-link"
-              href="https://fonts.google.com/icons?q=groups"
-              target="_blank"
-              rel="noopener noreferrer"
-              aria-label="Google Fonts Icons: groups"
-              ><span class="material-symbols-rounded" aria-hidden="true">groups</span></a
-            >
-            <span class="skill-strip__label i18n" data-en="Cross-functional Leadership" data-ru="Кросс-функциональное лидерство">Cross-functional Leadership</span>
-          </button>
-          <button type="button" class="skill-strip" data-skill-ref="mentorship">
-            <a
-              class="skill-strip__icon-link"
-              href="https://fonts.google.com/icons?q=school"
-              target="_blank"
-              rel="noopener noreferrer"
-              aria-label="Google Fonts Icons: school"
-              ><span class="material-symbols-rounded" aria-hidden="true">school</span></a
-            >
-            <span class="skill-strip__label i18n" data-en="Mentorship &amp; Education" data-ru="Менторство и обучение">Mentorship &amp; Education</span>
-          </button>
+          <a class="pill" href="https://t.me/olegdevyatow" target="_blank" rel="noopener noreferrer">Telegram · @olegdevyatow</a>
+          <a class="pill" href="https://www.linkedin.com/in/oleg-devyatow-653584367/" target="_blank" rel="noopener noreferrer">LinkedIn</a>
+          <a class="pill" href="https://www.behance.net/reesoonki" target="_blank" rel="noopener noreferrer">behance.net/reesoonki</a>
         </div>
       </section>
 
-      <section class="section" id="skills-matrix">
+      <section class="section vis section--matrix" id="skills-matrix">
         <div class="section__head">
-          <h2
-            class="i18n"
-            data-en="RESEARCH · VISUAL · DELIVERY · ART"
-            data-ru="ИССЛЕДОВАНИЕ · ВИЗУАЛ · ПОСТАВКА · АРТ"
-          >
-            RESEARCH · VISUAL · DELIVERY · ART
-          </h2>
-          <button
-            type="button"
-            class="section__copy-link"
-            data-anchor="skills-matrix"
-            aria-label="Copy link to Skills matrix section"
-          >
+          <h2 class="i18n" data-en="Skills matrix" data-ru="Матрица навыков">Skills matrix</h2>
+          <button type="button" class="section__copy-link" data-anchor="skills-matrix" aria-label="Copy link to Skills matrix section">
             <span class="material-symbols-rounded" aria-hidden="true">link</span>
           </button>
         </div>
-        <div class="skills-grid skills-grid--matrix">
-          <article
-            class="skill-card skill-card--interactive"
-            data-skill="product-thinking"
-          >
-            <div class="skill-card__head">
-              <a
-                class="skill-card__icon-link"
-                href="https://fonts.google.com/icons?q=psychology"
-                target="_blank"
-                rel="noopener noreferrer"
-                aria-label="Google Fonts Icons: psychology"
-                ><span class="material-symbols-rounded" aria-hidden="true">psychology</span></a
-              >
-              <div>
-                <h3>Product Thinking</h3>
-                <p class="skill-card__sub">Outcomes, not screens</p>
-              </div>
-            </div>
-            <div class="skill-card__tags">
-              <span class="chip chip--dense">9+ yrs</span>
-              <span class="chip chip--dense">9+ лет</span>
-              <span class="chip chip--dense">20+ products</span>
-              <span class="chip chip--dense">Fintech · SaaS · AI</span>
-            </div>
-            <p class="skill-card__preview">
-              Marketing degree before any design tool. JTBD, CJM, Impact Mapping — roadmap co-owned with PM via RICE/ICE.
-            </p>
-            <p class="skill-card__case"><span class="skill-card__case-arrow">→</span> Gate19 — A/B tested payment format flow.</p>
-          </article>
-
-          <article
-            class="skill-card skill-card--interactive"
-            data-skill="ux-research"
-          >
-            <div class="skill-card__head">
-              <a
-                class="skill-card__icon-link"
-                href="https://fonts.google.com/icons?q=biotech"
-                target="_blank"
-                rel="noopener noreferrer"
-                aria-label="Google Fonts Icons: biotech"
-                ><span class="material-symbols-rounded" aria-hidden="true">biotech</span></a
-              >
-              <div>
-                <h3>UX Research</h3>
-                <p class="skill-card__sub">Marketing brain + designer eye</p>
-              </div>
-            </div>
-            <div class="skill-card__tags">
-              <span class="chip chip--dense">100+ A/B</span>
-              <span class="chip chip--dense">Amplitude · Mixpanel</span>
-            </div>
-            <p class="skill-card__preview">Metric before pixels — mental models tied to funnel and experiment design.</p>
-            <p class="skill-card__case"><span class="skill-card__case-arrow">→</span> JAVHD — 100+ landings → system.</p>
-          </article>
-
-          <article
-            class="skill-card skill-card--interactive"
-            data-skill="information-architecture"
-          >
-            <div class="skill-card__head">
-              <a
-                class="skill-card__icon-link"
-                href="https://fonts.google.com/icons?q=account_tree"
-                target="_blank"
-                rel="noopener noreferrer"
-                aria-label="Google Fonts Icons: account_tree"
-                ><span class="material-symbols-rounded" aria-hidden="true">account_tree</span></a
-              >
-              <div>
-                <h3>Information Architecture</h3>
-                <p class="skill-card__sub">Complex systems that feel simple</p>
-              </div>
-            </div>
-            <div class="skill-card__tags">
-              <span class="chip chip--dense">CRM · SaaS · Dashboards</span>
-              <span class="chip chip--dense">−40% follow-ups</span>
-            </div>
-            <p class="skill-card__preview">
-              Dense data, complex workflows. Empty states, error handling, progressive disclosure — same care as happy path.
-            </p>
-            <p class="skill-card__case"><span class="skill-card__case-arrow">→</span> Corgday HR CRM — IA around real workflows.</p>
-          </article>
-
-          <article
-            class="skill-card skill-card--interactive"
-            data-skill="design-systems"
-          >
-            <div class="skill-card__head">
-              <a
-                class="skill-card__icon-link"
-                href="https://fonts.google.com/icons?q=hub"
-                target="_blank"
-                rel="noopener noreferrer"
-                aria-label="Google Fonts Icons: hub"
-                ><span class="material-symbols-rounded" aria-hidden="true">hub</span></a
-              >
-              <div>
-                <h3>Design Systems</h3>
-                <p class="skill-card__sub">One library. 20 products. 5 minutes.</p>
-              </div>
-            </div>
-            <div class="skill-card__tags">
-              <span class="chip chip--dense">−60% handoff</span>
-              <span class="chip chip--dense">White Label · 5 min</span>
-              <span class="chip chip--dense">1 library / 20 products</span>
-            </div>
-            <p class="skill-card__preview">Tokens, components, docs — one source of truth across brands and white-label surfaces.</p>
-            <p class="skill-card__case"><span class="skill-card__case-arrow">→</span> Gate19 — library across the ecosystem.</p>
-          </article>
-
-          <article
-            class="skill-card skill-card--interactive"
-            data-skill="ai-workflow"
-          >
-            <div class="skill-card__head">
-              <a
-                class="skill-card__icon-link"
-                href="https://fonts.google.com/icons?q=smart_toy"
-                target="_blank"
-                rel="noopener noreferrer"
-                aria-label="Google Fonts Icons: smart_toy"
-                ><span class="material-symbols-rounded" aria-hidden="true">smart_toy</span></a
-              >
-              <div>
-                <h3>AI-Augmented Workflow</h3>
-                <p class="skill-card__sub">Building pipelines…</p>
-              </div>
-            </div>
-            <div class="skill-card__tags">
-              <span class="chip chip--dense">brief → publish</span>
-              <span class="chip chip--dense">~5× iterations</span>
-              <span class="chip chip--dense">20+ products</span>
-            </div>
-            <p class="skill-card__preview">Brief to shipped with AI assist — faster exploration, same bar for craft.</p>
-            <p class="skill-card__case"><span class="skill-card__case-arrow">→</span> MiraiTech (PNB)</p>
-          </article>
-
-          <article
-            class="skill-card skill-card--interactive"
-            data-skill="agentive-ux"
-          >
-            <div class="skill-card__head">
-              <a
-                class="skill-card__icon-link"
-                href="https://fonts.google.com/icons?q=gamepad"
-                target="_blank"
-                rel="noopener noreferrer"
-                aria-label="Google Fonts Icons: gamepad"
-                ><span class="material-symbols-rounded" aria-hidden="true">gamepad</span></a
-              >
-              <div>
-                <h3>Agentive UX</h3>
-                <p class="skill-card__sub">When AI acts, UX becomes about trust</p>
-              </div>
-            </div>
-            <div class="skill-card__tags">
-              <span class="chip chip--dense">AI flows</span>
-              <span class="chip chip--dense">agent UI</span>
-              <span class="chip chip--dense">human-in-the-loop</span>
-            </div>
-            <p class="skill-card__preview">Designing for autonomy: permissions, undo, and explainability by default.</p>
-            <p class="skill-card__case"><span class="skill-card__case-arrow">→</span> ShugarAi — MiraiTech</p>
-          </article>
-
-          <article
-            class="skill-card skill-card--interactive"
-            data-skill="design-ops"
-          >
-            <div class="skill-card__head">
-              <a
-                class="skill-card__icon-link"
-                href="https://fonts.google.com/icons?q=settings_suggest"
-                target="_blank"
-                rel="noopener noreferrer"
-                aria-label="Google Fonts Icons: settings_suggest"
-                ><span class="material-symbols-rounded" aria-hidden="true">settings_suggest</span></a
-              >
-              <div>
-                <h3>Design Ops</h3>
-                <p class="skill-card__sub">Systems, not just talent</p>
-              </div>
-            </div>
-            <div class="skill-card__tags">
-              <span class="chip chip--dense">−60% handoff</span>
-              <span class="chip chip--dense">20+ parallel</span>
-              <span class="chip chip--dense">AI stack</span>
-            </div>
-            <p class="skill-card__preview">Rituals, templates, and tooling so teams ship without heroics.</p>
-            <p class="skill-card__case"><span class="skill-card__case-arrow">→</span> MiraiTech</p>
-          </article>
-
-          <article
-            class="skill-card skill-card--interactive"
-            data-skill="ecosystem"
-          >
-            <div class="skill-card__head">
-              <a
-                class="skill-card__icon-link"
-                href="https://fonts.google.com/icons?q=language"
-                target="_blank"
-                rel="noopener noreferrer"
-                aria-label="Google Fonts Icons: language"
-                ><span class="material-symbols-rounded" aria-hidden="true">language</span></a
-              >
-              <div>
-                <h3>Ecosystem Design</h3>
-                <p class="skill-card__sub">The whole journey…</p>
-              </div>
-            </div>
-            <div class="skill-card__tags">
-              <span class="chip chip--dense">Entry → Activation → Retention</span>
-              <span class="chip chip--dense">3+ ecosystems</span>
-            </div>
-            <p class="skill-card__preview">Connecting acquisition, product, and lifecycle metrics into one narrative.</p>
-            <p class="skill-card__case"><span class="skill-card__case-arrow">→</span> JAVHD — MiraiTech</p>
-          </article>
-
-          <article
-            class="skill-card skill-card--interactive"
-            data-skill="cross-functional"
-          >
-            <div class="skill-card__head">
-              <a
-                class="skill-card__icon-link"
-                href="https://fonts.google.com/icons?q=groups"
-                target="_blank"
-                rel="noopener noreferrer"
-                aria-label="Google Fonts Icons: groups"
-                ><span class="material-symbols-rounded" aria-hidden="true">groups</span></a
-              >
-              <div>
-                <h3>Cross-functional Leadership</h3>
-                <p class="skill-card__sub">Fluent in PM, engineering, analytics</p>
-              </div>
-            </div>
-            <div class="skill-card__tags">
-              <span class="chip chip--dense">3 yrs cross-team</span>
-              <span class="chip chip--dense">Roadmap co-owner</span>
-            </div>
-            <p class="skill-card__preview">Workshops, specs, and reviews that keep design, dev, and data aligned.</p>
-            <p class="skill-card__case"><span class="skill-card__case-arrow">→</span> MiraiTech · 3 years</p>
-          </article>
-
-          <article
-            class="skill-card skill-card--interactive"
-            data-skill="mentorship"
-          >
-            <div class="skill-card__head">
-              <a
-                class="skill-card__icon-link"
-                href="https://fonts.google.com/icons?q=school"
-                target="_blank"
-                rel="noopener noreferrer"
-                aria-label="Google Fonts Icons: school"
-                ><span class="material-symbols-rounded" aria-hidden="true">school</span></a
-              >
-              <div>
-                <h3>Mentorship &amp; Education</h3>
-                <p class="skill-card__sub">Teaching made me a sharper designer</p>
-              </div>
-            </div>
-            <div class="skill-card__tags">
-              <span class="chip chip--dense">1000+ students</span>
-              <span class="chip chip--dense">CONTENTED · Skillbox</span>
-              <span class="chip chip--dense">Junior → Middle</span>
-            </div>
-            <p class="skill-card__preview">Programs that bridge theory and shipping — critique, systems, and career paths.</p>
-            <p class="skill-card__case"><span class="skill-card__case-arrow">→</span> CONTENTED + Skillbox</p>
-          </article>
+        <p class="matrix-intro i18n" data-en="Pick a category — matching chips stay bright; click a chip to open the linked case." data-ru="Выберите категорию — подсвечиваются связанные чипы; клик по чипу открывает кейс."></p>
+        <div class="matrix-toolbar" role="tablist" aria-label="Skill categories">
+          <button type="button" class="matrix-cat-btn matrix-cat-btn--active" data-matrix-cat="1" aria-pressed="true" role="tab">
+            <span class="i18n" data-en="Research" data-ru="Исследование"></span>
+          </button>
+          <button type="button" class="matrix-cat-btn" data-matrix-cat="2" aria-pressed="false" role="tab">
+            <span class="i18n" data-en="Visualization" data-ru="Визуализация"></span>
+          </button>
+          <button type="button" class="matrix-cat-btn" data-matrix-cat="3" aria-pressed="false" role="tab">
+            <span class="i18n" data-en="Leadership" data-ru="Лидерство"></span>
+          </button>
+          <button type="button" class="matrix-cat-btn" data-matrix-cat="4" aria-pressed="false" role="tab">
+            <span class="i18n" data-en="Fine art" data-ru="Искусство"></span>
+          </button>
         </div>
+        <div id="matrixChipsRoot" class="matrix-chips"></div>
       </section>
 
-      <section class="section" id="projects">
+      <section class="section vis" id="projects">
         <div class="section__head">
-          <h2
-            class="i18n"
-            data-en="WORK THAT SHIPPED &amp; WORKED"
-            data-ru="РАБОТЫ, КОТОРЫЕ ВЫШЛИ В ПРОД И СРАБОТАЛИ"
-          >
-            WORK THAT SHIPPED &amp; WORKED
-          </h2>
+          <h2 class="i18n" data-en="Selected work" data-ru="Избранные работы">Selected work</h2>
           <button
             type="button"
             class="section__copy-link"
@@ -511,18 +173,18 @@
             <span class="material-symbols-rounded" aria-hidden="true">link</span>
           </button>
         </div>
-        <div class="work-grid work-grid--matrix">
+        <div class="work-grid work-grid--matrix work-grid--horizontal-cards">
           <article
             class="work-card work-card--interactive"
             data-project="game-ui"
             data-title-en="Game UI · In-game Shop"
             data-title-ru="Game UI · In-game Shop"
-            data-p1-en="Store and HUD work for a live game economy — bundles, offers, and clarity under pressure."
-            data-p1-ru="Магазин и HUD в живой игровой экономике — бандлы, офферы и ясность под давлением."
-            data-p2-en="We ran A/B on bundle presentation; attach rate improved by about eighteen percent while keeping latency stable."
-            data-p2-ru="A/B на подаче бандлов: attach вырос примерно на 18% при стабильной задержке."
-            data-p3-en="HUD offer readability dropped by about zero point three five seconds in lab tests — same metrics echoed in the third build of the case narrative."
-            data-p3-ru="Читаемость оффера в HUD в лаборатории — минус ~0.35 с; те же акценты в третьем абзаце кейса."
+            data-b1-en="Store and HUD work for a live game economy — bundles, offers, and clarity under pressure."
+            data-b1-ru="Магазин и HUD в живой игровой экономике — бандлы, офферы и ясность под давлением."
+            data-b2-en="We ran A/B on bundle presentation; attach rate improved by about eighteen percent while keeping latency stable."
+            data-b2-ru="A/B на подаче бандлов: attach вырос примерно на 18% при стабильной задержке."
+            data-b3-en="HUD offer readability dropped by about zero point three five seconds in lab tests — same metrics echoed in the third build of the case narrative."
+            data-b3-ru="Читаемость оффера в HUD в лаборатории — минус ~0.35 с; те же акценты в третьем абзаце кейса."
           >
             <img
               src="https://www.figma.com/api/mcp/asset/59832389-aacb-42ea-9a7e-24a0085166e6"
@@ -544,12 +206,12 @@
             data-project="gate19"
             data-title-en="Gate19 · White Label Platform"
             data-title-ru="Gate19 · White Label Platform"
-            data-p1-en="Ecosystem-wide design system and white-label rollout — one library serving twenty products."
-            data-p1-ru="Дизайн-система и white-label на всю экосистему — одна библиотека на 20 продуктов."
-            data-p2-en="Handoff time fell by about sixty percent; new product UI landed in under seven days with the five-minute white-label path."
-            data-p2-ru="Хэнд-офф сократился примерно на 60%; UI нового продукта — быстрее 7 дней, white-label за ~5 минут."
-            data-p3-en="The program sits inside the PNB Agency ecosystem — payment flows, A/B culture, and shared tokens across brands."
-            data-p3-ru="Программа в экосистеме PNB Agency — оплаты, культура A/B и общие токены между брендами."
+            data-b1-en="Ecosystem-wide design system and white-label rollout — one library serving twenty products."
+            data-b1-ru="Дизайн-система и white-label на всю экосистему — одна библиотека на 20 продуктов."
+            data-b2-en="Handoff time fell by about sixty percent; new product UI landed in under seven days with the five-minute white-label path."
+            data-b2-ru="Хэнд-офф сократился примерно на 60%; UI нового продукта — быстрее 7 дней, white-label за ~5 минут."
+            data-b3-en="The program sits inside the PNB Agency ecosystem — payment flows, A/B culture, and shared tokens across brands."
+            data-b3-ru="Программа в экосистеме PNB Agency — оплаты, культура A/B и общие токены между брендами."
             data-link-url="https://pnb.agency"
             data-link-label="PNB Agency"
           >
@@ -574,12 +236,12 @@
             data-project="javhd"
             data-title-en="JAVHD · Funnel Lab"
             data-title-ru="JAVHD · Funnel Lab"
-            data-p1-en="One hundred-plus landing variants — each with a named conversion hypothesis and instrumentation."
-            data-p1-ru="100+ вариантов лендингов — у каждого именованная гипотеза конверсии и инструментирование."
-            data-p2-en="Trial-to-paid uplift of about twelve percent once winning patterns were templated."
-            data-p2-ru="Рост trial → paid примерно на 12% после шаблонизации победивших паттернов."
-            data-p3-en="Delivered with MiraiTech — A/B funnels at scale, from ideation to a repeatable landing system."
-            data-p3-ru="С MiraiTech — A/B воронки в масштабе, от идеи до повторяемой системы лендингов."
+            data-b1-en="One hundred-plus landing variants — each with a named conversion hypothesis and instrumentation."
+            data-b1-ru="100+ вариантов лендингов — у каждого именованная гипотеза конверсии и инструментирование."
+            data-b2-en="Trial-to-paid uplift of about twelve percent once winning patterns were templated."
+            data-b2-ru="Рост trial → paid примерно на 12% после шаблонизации победивших паттернов."
+            data-b3-en="Delivered with MiraiTech — A/B funnels at scale, from ideation to a repeatable landing system."
+            data-b3-ru="С MiraiTech — A/B воронки в масштабе, от идеи до повторяемой системы лендингов."
             data-link-url="https://miraitech.co"
             data-link-label="MiraiTech"
           >
@@ -603,12 +265,12 @@
             data-project="corgday"
             data-title-en="Corgday HR CRM"
             data-title-ru="Corgday HR CRM"
-            data-p1-en="HR operations tool with dense queues — payroll exceptions, follow-ups, and noisy Slack threads."
-            data-p1-ru="HR-инструмент с плотными очередями — зарплатные исключения, фоллоуапы и шумные треды в Slack."
-            data-p2-en="Information architecture rebuilt around real workflows; manual follow-ups dropped by about forty percent."
-            data-p2-ru="IA перестроена вокруг реальных процессов; ручные фоллоуапы сократились примерно на 40%."
-            data-p3-en="Payroll exception queue wait fell by about twenty-eight percent after clarifying states and ownership."
-            data-p3-ru="Ожидание в очереди зарплатных исключений сократилось примерно на 28% после ясных статусов и ответственных."
+            data-b1-en="HR operations tool with dense queues — payroll exceptions, follow-ups, and noisy Slack threads."
+            data-b1-ru="HR-инструмент с плотными очередями — зарплатные исключения, фоллоуапы и шумные треды в Slack."
+            data-b2-en="Information architecture rebuilt around real workflows; manual follow-ups dropped by about forty percent."
+            data-b2-ru="IA перестроена вокруг реальных процессов; ручные фоллоуапы сократились примерно на 40%."
+            data-b3-en="Payroll exception queue wait fell by about twenty-eight percent after clarifying states and ownership."
+            data-b3-ru="Ожидание в очереди зарплатных исключений сократилось примерно на 28% после ясных статусов и ответственных."
           >
             <img
               src="https://www.figma.com/api/mcp/asset/59832389-aacb-42ea-9a7e-24a0085166e6"
@@ -630,12 +292,12 @@
             data-project="shugarai"
             data-title-en="ShugarAi"
             data-title-ru="ShugarAi"
-            data-p1-en="Agentic product surfaces with a new feed experience — cohorts behaved differently overnight."
-            data-p1-ru="Агентные поверхности с новой лентой — когорты стали вести себя иначе буквально за ночь."
-            data-p2-en="Wow return visits up about twenty-seven percent; session length up about nineteen percent after the feed redesign."
-            data-p2-ru="Wow-возвраты выросли примерно на 27%; длина сессии — на ~19% после редизайна ленты."
-            data-p3-en="Shipped with MiraiTech — trust-first UX for autonomous recommendations and recovery paths."
-            data-p3-ru="С MiraiTech — UX с упором на доверие для автономных рекомендаций и сценариев восстановления."
+            data-b1-en="Agentic product surfaces with a new feed experience — cohorts behaved differently overnight."
+            data-b1-ru="Агентные поверхности с новой лентой — когорты стали вести себя иначе буквально за ночь."
+            data-b2-en="Wow return visits up about twenty-seven percent; session length up about nineteen percent after the feed redesign."
+            data-b2-ru="Wow-возвраты выросли примерно на 27%; длина сессии — на ~19% после редизайна ленты."
+            data-b3-en="Shipped with MiraiTech — trust-first UX for autonomous recommendations and recovery paths."
+            data-b3-ru="С MiraiTech — UX с упором на доверие для автономных рекомендаций и сценариев восстановления."
             data-link-url="https://miraitech.co"
             data-link-label="MiraiTech"
           >
@@ -659,12 +321,12 @@
             data-project="adbot"
             data-title-en="Adbot"
             data-title-ru="Adbot"
-            data-p1-en="Campaign onboarding with dense venue cards — every field earned its place."
-            data-p1-ru="Онбординг кампаний с плотными карточками площадок — каждое поле оправдано."
-            data-p2-en="Steps to the first campaign dropped by about thirty-five percent after restructuring the wizard."
-            data-p2-ru="Шагов до первой кампании стало примерно на 35% меньше после перестройки визарда."
-            data-p3-en="Focus on comprehension, not clicks — progressive disclosure for complex ad parameters."
-            data-p3-ru="Фокус на понимании, а не на кликах — progressive disclosure для сложных параметров рекламы."
+            data-b1-en="Campaign onboarding with dense venue cards — every field earned its place."
+            data-b1-ru="Онбординг кампаний с плотными карточками площадок — каждое поле оправдано."
+            data-b2-en="Steps to the first campaign dropped by about thirty-five percent after restructuring the wizard."
+            data-b2-ru="Шагов до первой кампании стало примерно на 35% меньше после перестройки визарда."
+            data-b3-en="Focus on comprehension, not clicks — progressive disclosure for complex ad parameters."
+            data-b3-ru="Фокус на понимании, а не на кликах — progressive disclosure для сложных параметров рекламы."
           >
             <img
               src="https://www.figma.com/api/mcp/asset/5df99f39-b449-4ed1-822f-e2a6ef75cd54"
@@ -683,7 +345,7 @@
         </div>
       </section>
 
-      <section class="section" id="experience">
+      <section class="section vis" id="experience">
         <div class="section__head">
           <h2>
             <span
@@ -1319,20 +981,56 @@
         </div>
       </section>
 
-      <footer class="footer-cta section section--last">
-        <p class="footer-cta__text">
-          <span
-            class="i18n"
-            data-en="9+ years crafting UX, UI, and systems — from first brief to scaled delivery. Let’s talk:"
-            data-ru="9+ лет в UX, UI и системах — от первого брифа до масштабной поставки. Напишите:"
-          ></span>
-          <a href="mailto:olegdevyatow@gmail.com">olegdevyatow@gmail.com</a>
-          ·
-          <a href="https://t.me/olegdevyatow" target="_blank" rel="noopener noreferrer">Telegram</a>
-        </p>
+      <footer class="footer-site section section--last vis">
+        <div class="footer-site__grid">
+          <div class="footer-site__main">
+            <h3 class="footer-site__h i18n" data-en="Education" data-ru="Образование"></h3>
+            <ul class="footer-site__list">
+              <li
+                class="i18n"
+                data-en="International Market Institute — management &amp; marketing (2021)."
+                data-ru="Международный институт рынка — менеджмент и маркетинг (2021)."
+              ></li>
+              <li
+                class="i18n"
+                data-en="Stepik / Skillbox — graphic design &amp; print foundations (2020)."
+                data-ru="Stepik / Skillbox — графдизайн и основы печати (2020)."
+              ></li>
+            </ul>
+            <h3 class="footer-site__h i18n" data-en="Earlier portfolios" data-ru="Прошлые портфолио"></h3>
+            <ul class="footer-site__list footer-site__list--inline">
+              <li>
+                <a class="footer-site__link" href="#" title="Замените на ссылку Notion">Notion</a>
+              </li>
+              <li>
+                <a class="footer-site__link" href="#" title="Замените на ссылку Tilda">Tilda</a>
+              </li>
+            </ul>
+            <div class="footer-site__social">
+              <a href="https://t.me/olegdevyatow" target="_blank" rel="noopener noreferrer">Telegram</a>
+              <a href="https://www.linkedin.com/in/oleg-devyatow-653584367/" target="_blank" rel="noopener noreferrer"
+                >LinkedIn</a
+              >
+              <a href="https://www.behance.net/reesoonki" target="_blank" rel="noopener noreferrer">Behance</a>
+            </div>
+          </div>
+          <div class="footer-parallax-target footer-site__cta">
+            <h3 class="footer-site__cta-title i18n" data-en="Let’s build the next release" data-ru="Сделаем следующий релиз"></h3>
+            <p
+              class="footer-site__cta-lead i18n"
+              data-en="9+ years in UX, UI, and systems — email or Telegram."
+              data-ru="9+ лет в UX, UI и системах — почта или Telegram."
+            ></p>
+            <div class="footer-site__cta-btns">
+              <a class="pill pill--light" href="mailto:olegdevyatow@gmail.com">Email</a>
+              <a class="pill" href="https://t.me/olegdevyatow" target="_blank" rel="noopener noreferrer">Telegram</a>
+            </div>
+          </div>
+        </div>
       </footer>
     </main>
     <script src="./competencies-data.js"></script>
+    <script src="./matrix-data.js"></script>
     <script src="./main.js" defer></script>
   </body>
 </html>
